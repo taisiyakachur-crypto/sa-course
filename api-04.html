@@ -2,23 +2,108 @@
 <nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">API-04</span></nav>
 <div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
   <div class="hero-badge fade-up">📋 Модуль API-04</div>
-  <h1 class="fade-up d1">SOAP та SRS документ:<br><span class="grad">WSDL, XML Schema та стандарти IEEE</span></h1>
-  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">SOAP зустрічається в legacy-системах та enterprise. SRS — головний документ який BA виробляє для технічної команди.</p>
+  <h1 class="fade-up d1">SOAP та SRS документ:<br><span class="grad">WSDL, XML Schema та стандарти IEEE 830</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">SOAP зустрічається в legacy та enterprise системах. SRS — головний документ який BA виробляє для технічної команди.</p>
 </div>
 
 <div class="section">
-  <div class="section-title">📚 Зміст модуля</div>
+  <div class="section-title">🧼 SOAP Web Services</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">SOAP (Simple Object Access Protocol) — XML-протокол для передачі структурованих повідомлень. Використовується в банках, держ. системах, ERP де важлива надійність і безпека.</p>
+  <div class="two-col">
+    <div class="card"><h3 style="color:var(--a1);margin-bottom:.8rem;">✅ Переваги SOAP</h3>
+      <ul class="checklist" style="font-size:.85rem;"><li>Стандартизована безпека (WS-Security)</li><li>Підтримка транзакцій та reliability</li><li>Незалежність від транспорту (HTTP, SMTP)</li><li>Строгий контракт (WSDL)</li></ul>
+    </div>
+    <div class="card"><h3 style="color:#f72585;margin-bottom:.8rem;">❌ Недоліки SOAP</h3>
+      <ul class="checklist" style="font-size:.85rem;"><li style="color:var(--a4);">Велика XML-розмірність повідомлень</li><li style="color:var(--a4);">Складність реалізації</li><li style="color:var(--a4);">Повільніший ніж REST/gRPC</li><li style="color:var(--a4);">Важко тестувати без спеціальних інструментів</li></ul>
+    </div>
+  </div>
+  <div class="code-block" style="margin-top:1.5rem;"><span class="cm">&lt;!-- Приклад SOAP запиту --&gt;</span>
+&lt;<span class="fn">soap:Envelope</span> xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/"&gt;
+  &lt;<span class="fn">soap:Header</span>/&gt;
+  &lt;<span class="fn">soap:Body</span>&gt;
+    &lt;<span class="fn">m:GetOrderStatus</span> xmlns:m="http://example.org/orders"&gt;
+      &lt;<span class="fn">m:OrderID</span>&gt;<span class="str">12345</span>&lt;/<span class="fn">m:OrderID</span>&gt;
+    &lt;/<span class="fn">m:GetOrderStatus</span>&gt;
+  &lt;/<span class="fn">soap:Body</span>&gt;
+&lt;/<span class="fn">soap:Envelope</span>&gt;</div>
+</div>
+
+<div class="section">
+  <div class="section-title">📄 SRS — Software Requirements Specification</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">SRS — це документ що є угодою між замовником і командою: що система має робити і як. Стандарт IEEE 830 / ISO 29148 визначає структуру та якісні характеристики.</p>
   <div class="card-grid">
-    <div class="card"><span class="card-icon">📖</span><h3>Теорія</h3><p>Ключові концепції та знання з детальними поясненнями і прикладами для BA та SA.</p></div>
-    <div class="card"><span class="card-icon">💡</span><h3>Практичні кейси</h3><p>Реальні ситуації з роботи аналітика з детальним розбором і рішеннями.</p></div>
-    <div class="card"><span class="card-icon">📋</span><h3>Глосарій термінів</h3><p>Всі ключові поняття з поясненнями українською для швидкого засвоєння.</p></div>
-    <div class="card"><span class="card-icon">❓</span><h3>Питання для перевірки</h3><p>Тести знань після кожного модуля щоб закріпити вивчене.</p></div>
+    <div class="card"><span class="card-icon">🎯</span><h3>Точність</h3><p style="color:var(--text2);">Кожна вимога описує одну конкретну річ без двозначності. "Система має" замість "система може".</p></div>
+    <div class="card"><span class="card-icon">✅</span><h3>Перевіряємість</h3><p style="color:var(--text2);">Кожну вимогу можна протестувати. Якщо не можна — вона сформульована неправильно.</p></div>
+    <div class="card"><span class="card-icon">🔗</span><h3>Трасованість</h3><p style="color:var(--text2);">Кожна вимога пов'язана з бізнес-ціллю і тест-кейсом. Зміна вимоги → оновлення тестів.</p></div>
+    <div class="card"><span class="card-icon">📊</span><h3>Пріоритетність</h3><p style="color:var(--text2);">Must/Should/Could (MoSCoW). Команда знає що є критичним а що — бажаним.</p></div>
   </div>
 </div>
+
 <div class="section">
-  <div class="highlight"><strong>🚀 Цей модуль в розробці.</strong> Детальний контент буде додано. Тим часом використовуй матеріали зі сторінки <a href="links.html" style="color:var(--a1);">Корисних посилань</a>.</div>
+  <div class="section-title">🏗 Структура SRS документа</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Вступ</h4><p>Мета документа, scope, терміни та скорочення, аудиторія, посилання на суміжні документи.</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Загальний опис</h4><p>Контекст системи, ролі користувачів, припущення і обмеження. Де система буде використовуватись.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Функціональні вимоги (FR)</h4><p>Що система повинна робити. User Stories з Acceptance Criteria. CRUD операції, бізнес-логіка, flows.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Нефункціональні вимоги (NFR)</h4><p>Як добре: Performance ≤ 200ms, Availability 99.9%, Security TLS, Usability WCAG 2.1.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Зовнішні інтерфейси</h4><p>API специфікація (OpenAPI), UI wireframes, інтеграції з зовнішніми системами.</p></div></div>
+    <div class="step"><div class="step-num">6</div><div class="step-body"><h4>Обмеження та припущення</h4><p>Технічний стек, залежності, що НЕ входить до scope (out of scope).</p></div></div>
+    <div class="step"><div class="step-num">7</div><div class="step-body"><h4>Додатки</h4><p>Глосарій, діаграми (ER, BPMN, sequence), матриця трасованості вимог.</p></div></div>
+  </div>
 </div>
 
-<div class="section"><div class="page-nav"><a href="api-03.html">← API-03</a><a href="api-05.html" class="next">API-05: UML діаграми →</a></div></div>
+<div class="section">
+  <div class="section-title">📋 Шаблон фрагменту SRS</div>
+  <div class="code-block"><span class="cm"># SRS — Модуль авторизації</span>
+
+<span class="fn">## FR-1: Авторизація через email + пароль</span>
+<span class="kw">As a</span> registered user
+<span class="kw">I want to</span> log in with email and password
+<span class="kw">So that</span> I can access my personal dashboard
+
+<span class="fn">Acceptance Criteria:</span>
+<span class="str">Given</span> user enters valid credentials
+<span class="str">When</span> clicks "Login"
+<span class="str">Then</span> system returns JWT token (200 OK)
+  <span class="str">And</span> redirects to /dashboard
+
+<span class="str">Given</span> user enters wrong password
+<span class="str">When</span> clicks "Login" 5th time
+<span class="str">Then</span> account blocked for 15 min (429)
+
+<span class="fn">## NFR-1: Performance</span>
+- Login response time ≤ 500ms at 1000 concurrent users
+- System availability ≥ 99.9% (SLA)
+
+<span class="fn">## NFR-2: Security</span>
+- Passwords hashed with bcrypt (cost ≥ 12)
+- 2FA required for admin role
+- All traffic via HTTPS/TLS 1.2+</div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Чим SOAP відрізняється від REST? Коли SOAP все ще застосовується?</li>
+    <li>Що таке WSDL і яка його роль у SOAP сервісах?</li>
+    <li>Які 8 характеристик хорошої SRS згідно IEEE 830?</li>
+    <li>Яка різниця між функціональними та нефункціональними вимогами?</li>
+    <li>Що таке матриця трасованості і навіщо вона потрібна?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">SOAP</span><span class="glossary-def">Simple Object Access Protocol — XML-протокол для обміну структурованими повідомленнями</span></div>
+    <div class="glossary-item"><span class="glossary-term">WSDL</span><span class="glossary-def">Web Services Description Language — XML-опис контракту SOAP сервісу</span></div>
+    <div class="glossary-item"><span class="glossary-term">SRS</span><span class="glossary-def">Software Requirements Specification — документ з повними вимогами до системи</span></div>
+    <div class="glossary-item"><span class="glossary-term">NFR</span><span class="glossary-def">Non-Functional Requirements — вимоги до якості: продуктивність, безпека, масштабованість</span></div>
+    <div class="glossary-item"><span class="glossary-term">Traceability Matrix</span><span class="glossary-def">Матриця зв'язку між вимогами, User Stories та тест-кейсами</span></div>
+    <div class="glossary-item"><span class="glossary-term">Scope</span><span class="glossary-def">Межі проєкту — що входить і що НЕ входить у розробку</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="api-03.html">← API-03</a><a href="api-05.html" class="next">API-05: UML →</a></div></div>
 <footer class="footer"><p>BA & SA Mastery · API-04 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
 </body></html>

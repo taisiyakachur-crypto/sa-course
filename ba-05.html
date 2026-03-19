@@ -2,21 +2,116 @@
 <nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">BA-05</span></nav>
 <div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
   <div class="hero-badge fade-up">🗺 Модуль BA-05</div>
-  <h1 class="fade-up d1">Моделювання процесів та нотації:<br><span class="grad">BPMN, DFD, ERD, C4, ArchiMate та SysML</span></h1>
+  <h1 class="fade-up d1">Моделювання процесів та нотації:<br><span class="grad">BPMN, DFD, ERD, C4 Model та ArchiMate</span></h1>
   <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Майстерність у нотаціях — це говорити різними мовами залежно від аудиторії. Кожна нотація вирішує свій клас комунікаційних задач.</p>
 </div>
 
 <div class="section">
-  <div class="section-title">📚 Зміст модуля</div>
-  <div class="card-grid">
-    <div class="card"><span class="card-icon">📖</span><h3>Теорія</h3><p>Ключові концепції та знання з детальними поясненнями і прикладами для BA та SA.</p></div>
-    <div class="card"><span class="card-icon">💡</span><h3>Практичні кейси</h3><p>Реальні ситуації з роботи аналітика з детальним розбором і рішеннями.</p></div>
-    <div class="card"><span class="card-icon">📋</span><h3>Глосарій термінів</h3><p>Всі ключові поняття з поясненнями українською для швидкого засвоєння.</p></div>
-    <div class="card"><span class="card-icon">❓</span><h3>Питання для перевірки</h3><p>Тести знань після кожного модуля щоб закріпити вивчене.</p></div>
+  <div class="section-title">🗺 Огляд нотацій моделювання</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Нотація</th><th>Фокус</th><th>Для кого</th><th>Інструменти</th><th>Коли застосовувати</th></tr></thead>
+    <tbody>
+      <tr><td><strong>BPMN 2.0</strong></td><td>Бізнес-процеси та потоки</td><td>Бізнес + Dev</td><td>Camunda, Lucidchart, draw.io</td><td>Опис процесів As-Is/To-Be</td></tr>
+      <tr><td><strong>DFD</strong></td><td>Потоки даних між процесами</td><td>SA, Dev</td><td>draw.io, Visio</td><td>Аналіз потоків даних у системі</td></tr>
+      <tr><td><strong>ERD</strong></td><td>Структура бази даних</td><td>Dev, DBA</td><td>dbdiagram.io, DBeaver</td><td>Проектування схеми БД</td></tr>
+      <tr><td><strong>UML</strong></td><td>Структура і поведінка системи</td><td>Dev, Architect</td><td>PlantUML, StarUML</td><td>Технічне проектування</td></tr>
+      <tr><td><strong>C4 Model</strong></td><td>Архітектура рівнями</td><td>Architect + бізнес</td><td>Structurizr, Mermaid</td><td>Документування архітектури</td></tr>
+      <tr><td><strong>ArchiMate</strong></td><td>Enterprise architecture</td><td>Architects</td><td>Archi</td><td>Стратегічне IT планування</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🔵 BPMN 2.0 — основні елементи</div>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto;">
+      <defs><marker id="bpa" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00d4ff"/></marker></defs>
+      <!-- Start event -->
+      <circle cx="60" cy="100" r="22" fill="rgba(0,255,136,0.15)" stroke="#00ff88" stroke-width="2"/>
+      <text x="60" y="140" text-anchor="middle" fill="#00ff88" font-family="Inter,sans-serif" font-size="9">Start</text>
+      <!-- Task 1 -->
+      <rect x="110" y="76" width="110" height="48" rx="8" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="165" y="104" text-anchor="middle" fill="#00d4ff" font-family="Inter,sans-serif" font-size="10">Отримати заявку</text>
+      <!-- Gateway 1 -->
+      <polygon points="270,100 295,76 320,100 295,124" fill="rgba(255,215,0,0.1)" stroke="#ffd700" stroke-width="1.5"/>
+      <text x="295" y="145" text-anchor="middle" fill="#ffd700" font-family="Inter,sans-serif" font-size="9">Валідна?</text>
+      <!-- Task 2 (yes path) -->
+      <rect x="345" y="55" width="110" height="48" rx="8" fill="rgba(0,212,255,0.1)" stroke="#00d4ff" stroke-width="1.5"/>
+      <text x="400" y="83" text-anchor="middle" fill="#00d4ff" font-family="Inter,sans-serif" font-size="10">Обробити</text>
+      <!-- Task 3 (no path) -->
+      <rect x="345" y="120" width="110" height="48" rx="8" fill="rgba(247,37,133,0.1)" stroke="#f72585" stroke-width="1.5"/>
+      <text x="400" y="148" text-anchor="middle" fill="#f72585" font-family="Inter,sans-serif" font-size="10">Відхилити</text>
+      <!-- End event -->
+      <circle cx="600" cy="100" r="22" fill="rgba(247,37,133,0.15)" stroke="#f72585" stroke-width="3"/>
+      <text x="600" y="140" text-anchor="middle" fill="#f72585" font-family="Inter,sans-serif" font-size="9">End</text>
+      <!-- Arrows -->
+      <line x1="82" y1="100" x2="106" y2="100" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+      <line x1="224" y1="100" x2="266" y2="100" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+      <line x1="320" y1="90" x2="341" y2="80" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+      <text x="328" y="74" fill="#00ff88" font-family="Inter,sans-serif" font-size="8">Yes</text>
+      <line x1="320" y1="110" x2="341" y2="136" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+      <text x="325" y="130" fill="#f72585" font-family="Inter,sans-serif" font-size="8">No</text>
+      <line x1="455" y1="79" x2="574" y2="90" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+      <line x1="455" y1="144" x2="574" y2="110" stroke="#00d4ff" stroke-width="1.5" marker-end="url(#bpa)"/>
+    </svg>
+  </div>
+  <div class="card-grid" style="margin-top:1.5rem;">
+    <div class="card"><span class="card-icon">⭕</span><h3>Events (події)</h3><p style="color:var(--text2);">Start (зелений), End (червоний), Intermediate. Що запускає процес і що його завершує.</p></div>
+    <div class="card"><span class="card-icon">▭</span><h3>Tasks (задачі)</h3><p style="color:var(--text2);">Прямокутники з заокругленими кутами. Людська задача, скрипт, сервіс, виклик API.</p></div>
+    <div class="card"><span class="card-icon">◇</span><h3>Gateways (шлюзи)</h3><p style="color:var(--text2);">Ромби для розгалуження. Exclusive (XOR), Parallel (AND), Inclusive (OR) gateway.</p></div>
+    <div class="card"><span class="card-icon">↔</span><h3>Sequence Flows</h3><p style="color:var(--text2);">Стрілки що з'єднують елементи в межах одного Pool. Визначають порядок виконання.</p></div>
+    <div class="card"><span class="card-icon">🏊</span><h3>Pools & Lanes</h3><p style="color:var(--text2);">Pool — учасник процесу (компанія, система). Lane — роль або підрозділ всередині Pool.</p></div>
+    <div class="card"><span class="card-icon">📨</span><h3>Message Flows</h3><p style="color:var(--text2);">Пунктирні стрілки між різними Pools. Показують обмін повідомленнями між учасниками.</p></div>
   </div>
 </div>
+
 <div class="section">
-  <div class="highlight"><strong>🚀 Цей модуль в розробці.</strong> Детальний контент буде додано. Тим часом використовуй матеріали зі сторінки <a href="links.html" style="color:var(--a1);">Корисних посилань</a>.</div>
+  <div class="section-title">📊 DFD — Data Flow Diagram</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">DFD показує як дані рухаються через систему. Рівні деталізації: Level 0 (Context) → Level 1 → Level 2.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Символ</th><th>Назва</th><th>Що позначає</th></tr></thead>
+    <tbody>
+      <tr><td>⬭ Овал/Коло</td><td>Process</td><td>Обробка або трансформація даних</td></tr>
+      <tr><td>⬛ Прямокутник</td><td>External Entity</td><td>Зовнішній актор: користувач, система</td></tr>
+      <tr><td>= Дві лінії</td><td>Data Store</td><td>Сховище даних (БД, файл)</td></tr>
+      <tr><td>→ Стрілка</td><td>Data Flow</td><td>Потік даних між елементами</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🏗 C4 Model — чотири рівні архітектури</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">C1</div><div class="step-body"><h4>Context — Контекст</h4><p>Система в оточенні: хто нею користується і з якими зовнішніми системами взаємодіє. Для бізнес-стейкхолдерів.</p></div></div>
+    <div class="step"><div class="step-num">C2</div><div class="step-body"><h4>Container — Контейнери</h4><p>Які великі блоки є всередині системи: веб-застосунок, мобільний додаток, API, база даних. Для команди.</p></div></div>
+    <div class="step"><div class="step-num">C3</div><div class="step-body"><h4>Component — Компоненти</h4><p>Деталізація одного контейнера: які модулі, сервіси, контролери. Для розробників.</p></div></div>
+    <div class="step"><div class="step-num">C4</div><div class="step-body"><h4>Code — Код</h4><p>UML Class Diagram рівня коду. Зазвичай генерується автоматично з коду. Для senior розробників.</p></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Яка різниця між BPMN і UML? Коли застосовувати кожну?</li>
+    <li>Що таке Gateway в BPMN і чим XOR відрізняється від AND Gateway?</li>
+    <li>Назви 4 елементи DFD і що кожен позначає.</li>
+    <li>Для якої аудиторії призначений кожен рівень C4 Model?</li>
+    <li>Чим ArchiMate відрізняється від BPMN?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">BPMN</span><span class="glossary-def">Business Process Model and Notation — стандарт для моделювання бізнес-процесів</span></div>
+    <div class="glossary-item"><span class="glossary-term">DFD</span><span class="glossary-def">Data Flow Diagram — діаграма потоків даних між процесами та сховищами</span></div>
+    <div class="glossary-item"><span class="glossary-term">ERD</span><span class="glossary-def">Entity-Relationship Diagram — схема сутностей та зв'язків бази даних</span></div>
+    <div class="glossary-item"><span class="glossary-term">C4 Model</span><span class="glossary-def">4-рівнева модель візуалізації архітектури: Context, Container, Component, Code</span></div>
+    <div class="glossary-item"><span class="glossary-term">ArchiMate</span><span class="glossary-def">Мова моделювання Enterprise Architecture: бізнес, інформаційний та технологічний шари</span></div>
+    <div class="glossary-item"><span class="glossary-term">Gateway (BPMN)</span><span class="glossary-def">Ромб в BPMN що контролює розгалуження та злиття потоків (XOR, AND, OR)</span></div>
+    <div class="glossary-item"><span class="glossary-term">Pool / Lane</span><span class="glossary-def">Pool — учасник процесу, Lane — роль або підрозділ всередині Pool в BPMN</span></div>
+    <div class="glossary-item"><span class="glossary-term">As-Is / To-Be</span><span class="glossary-def">Поточний стан процесу (As-Is) та бажаний після змін (To-Be)</span></div>
+  </div>
 </div>
 
 <div class="section"><div class="page-nav"><a href="ba-04.html">← BA-04</a><a href="../index.html" class="next">← Головна →</a></div></div>

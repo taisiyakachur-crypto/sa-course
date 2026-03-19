@@ -7,18 +7,163 @@
 </div>
 
 <div class="section">
-  <div class="section-title">📚 Зміст модуля</div>
-  <div class="card-grid">
-    <div class="card"><span class="card-icon">📖</span><h3>Теорія</h3><p>Ключові концепції та знання з детальними поясненнями і прикладами для BA та SA.</p></div>
-    <div class="card"><span class="card-icon">💡</span><h3>Практичні кейси</h3><p>Реальні ситуації з роботи аналітика з детальним розбором і рішеннями.</p></div>
-    <div class="card"><span class="card-icon">📋</span><h3>Глосарій термінів</h3><p>Всі ключові поняття з поясненнями українською для швидкого засвоєння.</p></div>
-    <div class="card"><span class="card-icon">❓</span><h3>Питання для перевірки</h3><p>Тести знань після кожного модуля щоб закріпити вивчене.</p></div>
+  <div class="section-title">🌐 Що таке API</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">API (Application Programming Interface) — це "меню ресторану". Ти бачиш що можна замовити (endpoints), але не бачиш як готується страва (server code). API визначає як системи спілкуються між собою.</p>
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 720 180" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:720px;display:block;margin:0 auto;">
+      <defs><marker id="a" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00d4ff"/></marker>
+      <marker id="b" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><polygon points="8 0,0 3,8 6" fill="#00ff88"/></marker></defs>
+      <rect x="20" y="50" width="150" height="80" rx="12" fill="rgba(247,37,133,0.1)" stroke="#f72585" stroke-width="1.5"/>
+      <text x="95" y="88" text-anchor="middle" fill="#f72585" font-family="Syne,sans-serif" font-size="11" font-weight="700">CLIENT</text>
+      <text x="95" y="106" text-anchor="middle" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Browser / Mobile / Postman</text>
+      <rect x="280" y="30" width="160" height="120" rx="12" fill="rgba(0,212,255,0.08)" stroke="#00d4ff" stroke-width="2"/>
+      <text x="360" y="75" text-anchor="middle" fill="#00d4ff" font-family="Syne,sans-serif" font-size="14" font-weight="900">API</text>
+      <text x="360" y="96" text-anchor="middle" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Endpoints · Auth</text>
+      <text x="360" y="112" text-anchor="middle" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Validation · Rate Limit</text>
+      <rect x="550" y="50" width="150" height="80" rx="12" fill="rgba(0,255,136,0.08)" stroke="#00ff88" stroke-width="1.5"/>
+      <text x="625" y="88" text-anchor="middle" fill="#00ff88" font-family="Syne,sans-serif" font-size="11" font-weight="700">SERVER</text>
+      <text x="625" y="106" text-anchor="middle" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Logic · Database</text>
+      <line x1="174" y1="82" x2="276" y2="82" stroke="#00d4ff" stroke-width="2" marker-end="url(#a)"/>
+      <text x="225" y="74" text-anchor="middle" fill="#00d4ff" font-family="Inter,sans-serif" font-size="8">REQUEST</text>
+      <line x1="276" y1="100" x2="174" y2="100" stroke="#00ff88" stroke-width="2" marker-end="url(#b)"/>
+      <text x="225" y="116" text-anchor="middle" fill="#00ff88" font-family="Inter,sans-serif" font-size="8">RESPONSE (JSON)</text>
+      <line x1="444" y1="82" x2="546" y2="82" stroke="#00d4ff" stroke-width="2" marker-end="url(#a)"/>
+      <line x1="546" y1="100" x2="444" y2="100" stroke="#00ff88" stroke-width="2" marker-end="url(#b)"/>
+    </svg>
   </div>
 </div>
+
 <div class="section">
-  <div class="highlight"><strong>🚀 Цей модуль в розробці.</strong> Детальний контент буде додано. Тим часом використовуй матеріали зі сторінки <a href="links.html" style="color:var(--a1);">Корисних посилань</a>.</div>
+  <div class="section-title">📋 HTTP-методи — CRUD операції</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Метод</th><th>CRUD</th><th>Що робить</th><th>Приклад URL</th><th>BA вимога</th></tr></thead>
+    <tbody>
+      <tr><td><code style="color:#00ff88;">GET</code></td><td>Read</td><td>Отримати дані</td><td>GET /api/users/123</td><td>"Система відображає профіль користувача"</td></tr>
+      <tr><td><code style="color:#00d4ff;">POST</code></td><td>Create</td><td>Створити новий запис</td><td>POST /api/users</td><td>"Система створює новий акаунт"</td></tr>
+      <tr><td><code style="color:#ffd700;">PUT</code></td><td>Update (повний)</td><td>Повністю замінити запис</td><td>PUT /api/users/123</td><td>"Система оновлює весь профіль"</td></tr>
+      <tr><td><code style="color:#a78bfa;">PATCH</code></td><td>Update (частковий)</td><td>Змінити окремі поля</td><td>PATCH /api/users/123</td><td>"Система змінює тільки email"</td></tr>
+      <tr><td><code style="color:#f72585;">DELETE</code></td><td>Delete</td><td>Видалити запис</td><td>DELETE /api/users/123</td><td>"Система видаляє акаунт"</td></tr>
+    </tbody>
+  </table></div>
 </div>
 
-<div class="section"><div class="page-nav"><a href="api-01.html">← API-01</a><a href="api-03.html" class="next">API-03: Безпека →</a></div></div>
+<div class="section">
+  <div class="section-title">✅ HTTP Status Codes</div>
+  <div class="card-grid">
+    <div class="card" style="border-color:rgba(0,255,136,0.3);"><h3 style="color:#00ff88;">2xx — Успіх</h3>
+      <div style="margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;">
+        <div><code style="color:#00ff88;">200 OK</code> <span style="color:var(--text2);"> — Запит успішний</span></div>
+        <div><code style="color:#00ff88;">201 Created</code> <span style="color:var(--text2);"> — Ресурс створено</span></div>
+        <div><code style="color:#00ff88;">204 No Content</code> <span style="color:var(--text2);"> — Видалено успішно</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(255,215,0,0.3);"><h3 style="color:#ffd700;">4xx — Помилка клієнта</h3>
+      <div style="margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;">
+        <div><code style="color:#ffd700;">400 Bad Request</code> <span style="color:var(--text2);"> — Невалідний запит</span></div>
+        <div><code style="color:#ffd700;">401 Unauthorized</code> <span style="color:var(--text2);"> — Не авторизований</span></div>
+        <div><code style="color:#ffd700;">403 Forbidden</code> <span style="color:var(--text2);"> — Немає доступу</span></div>
+        <div><code style="color:#ffd700;">404 Not Found</code> <span style="color:var(--text2);"> — Не знайдено</span></div>
+        <div><code style="color:#ffd700;">422 Unprocessable</code> <span style="color:var(--text2);"> — Помилка валідації</span></div>
+      </div>
+    </div>
+    <div class="card" style="border-color:rgba(247,37,133,0.3);"><h3 style="color:#f72585;">5xx — Помилка сервера</h3>
+      <div style="margin-top:.8rem;display:flex;flex-direction:column;gap:.4rem;font-size:.85rem;">
+        <div><code style="color:#f72585;">500 Internal Error</code> <span style="color:var(--text2);"> — Сервер "впав"</span></div>
+        <div><code style="color:#f72585;">502 Bad Gateway</code> <span style="color:var(--text2);"> — Проблема proxy</span></div>
+        <div><code style="color:#f72585;">503 Unavailable</code> <span style="color:var(--text2);"> — Сервер недоступний</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="highlight gold" style="margin-top:1rem;"><strong>🎯 BA в Acceptance Criteria:</strong> "При успішній реєстрації система повертає 201. При дублікаті email — 409 Conflict. При невалідних даних — 422 з описом полів що не пройшли валідацію."</div>
+</div>
+
+<div class="section">
+  <div class="section-title">🔬 REST vs GraphQL vs gRPC vs WebSocket</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Тип API</th><th>Коли використовувати</th><th>Переваги</th><th>Недоліки</th></tr></thead>
+    <tbody>
+      <tr><td><strong>REST</strong></td><td>90% веб-додатків, публічні API</td><td>Простий, стандартний, легко тестувати в Postman</td><td>Over/under fetching</td></tr>
+      <tr><td><strong>GraphQL</strong></td><td>Складні дані, мобільні з обмеженим трафіком</td><td>Гнучкість — запитуєш тільки потрібні поля</td><td>Складніше кешування</td></tr>
+      <tr><td><strong>gRPC</strong></td><td>Внутрішні мікросервіси, high-performance</td><td>Швидкий, бінарний протокол, строга типізація</td><td>Не підходить для браузера</td></tr>
+      <tr><td><strong>WebSocket</strong></td><td>Чати, live-дані, ігри, біржі</td><td>Двостороннє постійне з'єднання, real-time</td><td>Складніша інфраструктура</td></tr>
+      <tr><td><strong>Webhooks</strong></td><td>Сповіщення про події (платежі, зміни статусу)</td><td>Push-модель — сервер сам сповіщає клієнта</td><td>Потрібен публічний URL</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">📄 JSON — формат даних API</div>
+  <div class="two-col">
+    <div><h4 style="color:var(--a1);margin-bottom:.8rem;">Запит (POST /api/users):</h4>
+      <div class="code-block">{
+  <span class="str">"name"</span>: <span class="str">"Олена Петренко"</span>,
+  <span class="str">"email"</span>: <span class="str">"olena@company.ua"</span>,
+  <span class="str">"role"</span>: <span class="str">"business_analyst"</span>,
+  <span class="str">"active"</span>: <span class="kw">true</span>
+}</div>
+    </div>
+    <div><h4 style="color:var(--a3);margin-bottom:.8rem;">Відповідь (201 Created):</h4>
+      <div class="code-block">{
+  <span class="str">"id"</span>: <span class="kw">4521</span>,
+  <span class="str">"name"</span>: <span class="str">"Олена Петренко"</span>,
+  <span class="str">"email"</span>: <span class="str">"olena@company.ua"</span>,
+  <span class="str">"role"</span>: <span class="str">"business_analyst"</span>,
+  <span class="str">"createdAt"</span>: <span class="str">"2026-03-19T10:30:00Z"</span>
+}</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🔧 Design-First підхід — OpenAPI / Swagger</div>
+  <p style="color:var(--text2);margin-bottom:1rem;">Design-first: спочатку описуємо API контракт у Swagger, погоджуємо з командою — потім розробляємо. Мінімізує помилки та переробки.</p>
+  <div class="code-block"><span class="cm"># Приклад OpenAPI 3.0 специфікації</span>
+<span class="fn">openapi</span>: 3.0.3
+<span class="fn">info</span>:
+  <span class="fn">title</span>: Orders API
+  <span class="fn">version</span>: 1.0.0
+<span class="fn">paths</span>:
+  <span class="str">/orders</span>:
+    <span class="fn">get</span>:
+      <span class="fn">summary</span>: Отримати список замовлень
+      <span class="fn">parameters</span>:
+        - <span class="fn">name</span>: status
+          <span class="fn">in</span>: query
+          <span class="fn">schema</span>: {<span class="fn">type</span>: string, <span class="fn">enum</span>: [new, paid, delivered]}
+        - <span class="fn">name</span>: limit
+          <span class="fn">in</span>: query
+          <span class="fn">schema</span>: {<span class="fn">type</span>: integer, <span class="fn">default</span>: 20}
+      <span class="fn">responses</span>:
+        <span class="str">'200'</span>: {<span class="fn">description</span>: Список замовлень}
+        <span class="str">'401'</span>: {<span class="fn">description</span>: Не авторизований}</div>
+  <div class="highlight green" style="margin-top:1rem;"><strong>🎯 BA роль:</strong> BA бере участь у розробці OpenAPI специфікації — описує бізнес-логіку endpoint-ів, обов'язкові поля, можливі помилки та acceptance criteria прямо в специфікації.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Яка різниця між GET і POST? Коли використовувати PATCH замість PUT?</li>
+    <li>Що означає статус 401 і чим він відрізняється від 403?</li>
+    <li>Коли обрати GraphQL замість REST? Наведи конкретний сценарій.</li>
+    <li>Що таке WebSocket і коли він потрібен замість звичайного API?</li>
+    <li>Як BA включає HTTP статус-коди в Acceptance Criteria?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">REST API</span><span class="glossary-def">Архітектурний стиль для побудови API з використанням HTTP методів та URL</span></div>
+    <div class="glossary-item"><span class="glossary-term">Endpoint</span><span class="glossary-def">Конкретна URL-адреса API (GET /api/users, POST /api/orders)</span></div>
+    <div class="glossary-item"><span class="glossary-term">JSON</span><span class="glossary-def">JavaScript Object Notation — стандартний формат передачі даних через API</span></div>
+    <div class="glossary-item"><span class="glossary-term">GraphQL</span><span class="glossary-def">Мова запитів до API де клієнт сам визначає які поля отримати</span></div>
+    <div class="glossary-item"><span class="glossary-term">WebSocket</span><span class="glossary-def">Протокол для постійного двостороннього з'єднання між клієнтом і сервером</span></div>
+    <div class="glossary-item"><span class="glossary-term">Webhook</span><span class="glossary-def">HTTP callback — сервер сам відправляє дані клієнту при настанні події</span></div>
+    <div class="glossary-item"><span class="glossary-term">OpenAPI/Swagger</span><span class="glossary-def">Стандарт для документування та специфікації REST API</span></div>
+    <div class="glossary-item"><span class="glossary-term">Rate Limiting</span><span class="glossary-def">Обмеження кількості API запитів від одного джерела за одиницю часу</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="api-01.html">← API-01: Архітектура</a><a href="api-03.html" class="next">API-03: Безпека →</a></div></div>
 <footer class="footer"><p>BA & SA Mastery · API-02 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
 </body></html>

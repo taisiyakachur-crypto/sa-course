@@ -3,20 +3,128 @@
 <div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
   <div class="hero-badge fade-up">🔐 Модуль API-03</div>
   <h1 class="fade-up d1">Безпека API та типи даних:<br><span class="grad">OAuth2, JWT, RBAC, Rate Limiting та помилки</span></h1>
-  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Безпека — не опція. BA включає security requirements у кожну специфікацію і розуміє типи авторизації та обробку помилок.</p>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Безпека — не опція. BA включає security requirements у кожну специфікацію і розуміє типи авторизації та форматування помилок.</p>
 </div>
 
 <div class="section">
-  <div class="section-title">📚 Зміст модуля</div>
-  <div class="card-grid">
-    <div class="card"><span class="card-icon">📖</span><h3>Теорія</h3><p>Ключові концепції та знання з детальними поясненнями і прикладами для BA та SA.</p></div>
-    <div class="card"><span class="card-icon">💡</span><h3>Практичні кейси</h3><p>Реальні ситуації з роботи аналітика з детальним розбором і рішеннями.</p></div>
-    <div class="card"><span class="card-icon">📋</span><h3>Глосарій термінів</h3><p>Всі ключові поняття з поясненнями українською для швидкого засвоєння.</p></div>
-    <div class="card"><span class="card-icon">❓</span><h3>Питання для перевірки</h3><p>Тести знань після кожного модуля щоб закріпити вивчене.</p></div>
+  <div class="section-title">🔑 Аутентифікація vs Авторизація</div>
+  <div class="two-col">
+    <div class="card" style="border-color:rgba(0,212,255,0.3);">
+      <h3 style="color:var(--a1);margin-bottom:.8rem;">🪪 Аутентифікація</h3>
+      <p style="color:var(--text2);margin-bottom:.8rem;"><strong>ХТО ТИ?</strong> Перевірка особи користувача.</p>
+      <ul class="checklist" style="font-size:.85rem;"><li>Логін + пароль (bcrypt хешування)</li><li>2FA / MFA (SMS, TOTP)</li><li>OAuth2 (Login with Google/GitHub)</li><li>SSO — Single Sign-On</li></ul>
+      <div class="highlight" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "2FA обов'язково для admin ролей"</div>
+    </div>
+    <div class="card" style="border-color:rgba(0,255,136,0.3);">
+      <h3 style="color:var(--a3);margin-bottom:.8rem;">🛡 Авторизація (RBAC)</h3>
+      <p style="color:var(--text2);margin-bottom:.8rem;"><strong>ЩО ТИ МОЖЕШ?</strong> Перевірка дозволів.</p>
+      <ul class="checklist" style="font-size:.85rem;"><li>Role-Based Access Control</li><li>Матриця ролей і дозволів</li><li>Перевірка на кожному endpoint</li></ul>
+      <div class="highlight green" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "Менеджер бачить тільки свої проєкти"</div>
+    </div>
   </div>
 </div>
+
 <div class="section">
-  <div class="highlight"><strong>🚀 Цей модуль в розробці.</strong> Детальний контент буде додано. Тим часом використовуй матеріали зі сторінки <a href="links.html" style="color:var(--a1);">Корисних посилань</a>.</div>
+  <div class="section-title">🔑 JWT — JSON Web Token</div>
+  <p style="color:var(--text2);margin-bottom:1rem;">JWT — електронний жетон що містить дані користувача і підпис. Stateless авторизація — не потрібно зберігати сесії на сервері.</p>
+  <div class="code-block"><span class="cm">// JWT структура: header.payload.signature</span>
+<span class="cm">// Payload містить claims:</span>
+{
+  <span class="str">"sub"</span>: <span class="str">"user_123"</span>,        <span class="cm">// User ID</span>
+  <span class="str">"role"</span>: <span class="str">"business_analyst"</span>, <span class="cm">// Роль</span>
+  <span class="str">"email"</span>: <span class="str">"olena@co.ua"</span>,    <span class="cm">// Email</span>
+  <span class="str">"exp"</span>: <span class="kw">1711843200</span>          <span class="cm">// Час закінчення (15 хв)</span>
+}
+
+<span class="cm">// Запит з токеном:</span>
+<span class="fn">GET</span> /api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIs...</div>
+  <div class="highlight" style="margin-top:1rem;"><strong>🎯 BA вимоги:</strong> "Access token дійсний 15 хвилин. Refresh token — 30 днів. При logout — токен інвалідується. Зберігати тільки в httpOnly cookie."</div>
+</div>
+
+<div class="section">
+  <div class="section-title">📋 Матриця RBAC — шаблон для BA</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Дія / Ресурс</th><th>Admin</th><th>Manager</th><th>Viewer</th><th>Guest</th></tr></thead>
+    <tbody>
+      <tr><td>GET /orders (всі)</td><td>✅</td><td>✅ (тільки свої)</td><td>✅ (тільки свої)</td><td>❌</td></tr>
+      <tr><td>POST /orders</td><td>✅</td><td>✅</td><td>❌</td><td>❌</td></tr>
+      <tr><td>DELETE /orders/:id</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+      <tr><td>GET /users</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td></tr>
+      <tr><td>GET /reports</td><td>✅</td><td>✅</td><td>✅</td><td>❌</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🚫 Rate Limiting та захист від атак</div>
+  <div class="card-grid">
+    <div class="card"><span class="card-icon">⏱</span><h3>Rate Limiting</h3><p style="color:var(--text2);">Обмеження кількості запитів: 100 req/хв на IP. Захист від DDoS та брутфорсу.</p><div class="highlight" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "Максимум 5 спроб входу, потім блокування на 15 хв"</div></div>
+    <div class="card"><span class="card-icon">🔒</span><h3>HTTPS / TLS</h3><p style="color:var(--text2);">Шифрування всього трафіку між клієнтом і сервером. TLS 1.2+ обов'язково.</p><div class="highlight" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "Весь трафік тільки через HTTPS, HTTP редиректиться"</div></div>
+    <div class="card"><span class="card-icon">💉</span><h3>SQL Injection / XSS</h3><p style="color:var(--text2);">Атаки через поля вводу. Захист: prepared statements, input validation, CSP заголовки.</p><div class="highlight" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "Валідація всіх user-input полів на backend"</div></div>
+    <div class="card"><span class="card-icon">🛡</span><h3>CORS</h3><p style="color:var(--text2);">Cross-Origin Resource Sharing — контроль які домени можуть робити запити до API.</p><div class="highlight" style="margin-top:.8rem;padding:.6rem .8rem;font-size:.8rem;">BA вимога: "API доступний тільки з our-domain.com"</div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">⚠️ Формат помилок API</div>
+  <p style="color:var(--text2);margin-bottom:1rem;">Структуровані помилки допомагають frontend показувати правильні повідомлення користувачам і допомагають розробникам дебажити.</p>
+  <div class="two-col">
+    <div><h4 style="color:#f72585;margin-bottom:.8rem;">Погана помилка:</h4>
+      <div class="code-block"><span class="cm">// Нічого не зрозуміло</span>
+{
+  <span class="str">"error"</span>: <span class="str">"Error 422"</span>
+}</div>
+    </div>
+    <div><h4 style="color:#00ff88;margin-bottom:.8rem;">Хороша помилка (RFC 7807):</h4>
+      <div class="code-block">{
+  <span class="str">"error"</span>: {
+    <span class="str">"code"</span>: <span class="str">"VALIDATION_ERROR"</span>,
+    <span class="str">"message"</span>: <span class="str">"Email невалідний"</span>,
+    <span class="str">"field"</span>: <span class="str">"email"</span>,
+    <span class="str">"details"</span>: [{
+      <span class="str">"field"</span>: <span class="str">"email"</span>,
+      <span class="str">"message"</span>: <span class="str">"Invalid format"</span>
+    }]
+  }
+}</div>
+    </div>
+  </div>
+  <div class="table-wrap" style="margin-top:1.5rem;"><table>
+    <thead><tr><th>Сценарій</th><th>HTTP код</th><th>Код помилки</th><th>Повідомлення</th></tr></thead>
+    <tbody>
+      <tr><td>Порожній email у формі</td><td>422</td><td>VALIDATION_ERROR</td><td>"Поле 'email' є обов'язковим"</td></tr>
+      <tr><td>Запит без токена</td><td>401</td><td>UNAUTHORIZED</td><td>"Token not provided"</td></tr>
+      <tr><td>Доступ до чужого документа</td><td>403</td><td>FORBIDDEN</td><td>"Недостатньо прав доступу"</td></tr>
+      <tr><td>Дублікат email при реєстрації</td><td>409</td><td>CONFLICT</td><td>"Користувач з таким email вже існує"</td></tr>
+      <tr><td>Занадто багато запитів</td><td>429</td><td>RATE_LIMIT_EXCEEDED</td><td>"Забагато запитів. Спробуй через 60 сек"</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Чим аутентифікація відрізняється від авторизації? Наведи приклад кожного.</li>
+    <li>Що таке JWT? Які дані він зберігає і скільки має бути дійсним access token?</li>
+    <li>Що таке RBAC і як BA описує матрицю дозволів?</li>
+    <li>Яка різниця між 401 і 403? Коли кожен повертати?</li>
+    <li>Що має містити хороший формат помилки API?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">JWT</span><span class="glossary-def">JSON Web Token — підписаний токен з даними користувача для stateless авторизації</span></div>
+    <div class="glossary-item"><span class="glossary-term">OAuth2</span><span class="glossary-def">Протокол авторизації через сторонній сервіс (Google, GitHub)</span></div>
+    <div class="glossary-item"><span class="glossary-term">RBAC</span><span class="glossary-def">Role-Based Access Control — система доступу на основі ролей</span></div>
+    <div class="glossary-item"><span class="glossary-term">2FA / MFA</span><span class="glossary-def">Двофакторна / багатофакторна аутентифікація</span></div>
+    <div class="glossary-item"><span class="glossary-term">Rate Limiting</span><span class="glossary-def">Обмеження кількості запитів від одного джерела за одиницю часу</span></div>
+    <div class="glossary-item"><span class="glossary-term">CORS</span><span class="glossary-def">Cross-Origin Resource Sharing — контроль доступу до API з різних доменів</span></div>
+    <div class="glossary-item"><span class="glossary-term">HTTPS/TLS</span><span class="glossary-def">Шифрований протокол передачі даних між клієнтом і сервером</span></div>
+    <div class="glossary-item"><span class="glossary-term">GDPR</span><span class="glossary-def">Регламент ЄС про захист персональних даних — вимоги до обробки PII</span></div>
+  </div>
 </div>
 
 <div class="section"><div class="page-nav"><a href="api-02.html">← API-02</a><a href="api-04.html" class="next">API-04: SOAP та SRS →</a></div></div>

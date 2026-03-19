@@ -7,18 +7,92 @@
 </div>
 
 <div class="section">
-  <div class="section-title">📚 Зміст модуля</div>
+  <div class="section-title">⚠️ Управління ризиками</div>
   <div class="card-grid">
-    <div class="card"><span class="card-icon">📖</span><h3>Теорія</h3><p>Ключові концепції та знання з детальними поясненнями і прикладами для BA та SA.</p></div>
-    <div class="card"><span class="card-icon">💡</span><h3>Практичні кейси</h3><p>Реальні ситуації з роботи аналітика з детальним розбором і рішеннями.</p></div>
-    <div class="card"><span class="card-icon">📋</span><h3>Глосарій термінів</h3><p>Всі ключові поняття з поясненнями українською для швидкого засвоєння.</p></div>
-    <div class="card"><span class="card-icon">❓</span><h3>Питання для перевірки</h3><p>Тести знань після кожного модуля щоб закріпити вивчене.</p></div>
+    <div class="card"><span class="card-icon">📊</span><h3>Стратегічні ризики</h3><p style="color:var(--text2);">Неправильний вибір мети, методології, технологій. Наприклад: обрана неправильна платформа.</p></div>
+    <div class="card"><span class="card-icon">💰</span><h3>Фінансові ризики</h3><p style="color:var(--text2);">Перевищення бюджету, нестача ресурсів. Часто виникають через нереалістичні оцінки.</p></div>
+    <div class="card"><span class="card-icon">⏰</span><h3>Ризики термінів</h3><p style="color:var(--text2);">Затримки через неточне оцінювання, зміни вимог, хворобу ключових фахівців.</p></div>
+    <div class="card"><span class="card-icon">🔧</span><h3>Технічні ризики</h3><p style="color:var(--text2);">Технологічний борг, нові технології, складні інтеграції з legacy-системами.</p></div>
+    <div class="card"><span class="card-icon">👥</span><h3>Ресурсні ризики</h3><p style="color:var(--text2);">Нестача кваліфікації, залежність від одного фахівця ("bus factor"), звільнення.</p></div>
+    <div class="card"><span class="card-icon">📋</span><h3>Ризики вимог</h3><p style="color:var(--text2);">Нечіткі вимоги, scope creep, часті зміни від стейкхолдерів — типові ризики для BA.</p></div>
   </div>
 </div>
+
 <div class="section">
-  <div class="highlight"><strong>🚀 Цей модуль в розробці.</strong> Детальний контент буде додано. Тим часом використовуй матеріали зі сторінки <a href="links.html" style="color:var(--a1);">Корисних посилань</a>.</div>
+  <div class="section-title">📋 Risk Register — реєстр ризиків</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>ID</th><th>Ризик</th><th>Імовірність</th><th>Вплив</th><th>Рейтинг</th><th>Стратегія</th><th>Власник</th></tr></thead>
+    <tbody>
+      <tr><td>R-01</td><td>Зміна вимог після старту розробки</td><td>Висока</td><td>Середній</td><td>🔴 Критичний</td><td>Зменшити (DoR, фіксація вимог)</td><td>BA</td></tr>
+      <tr><td>R-02</td><td>Затримка інтеграції з Payment API</td><td>Середня</td><td>Високий</td><td>🟡 Суттєвий</td><td>Уникнути (mock API + паралельна розробка)</td><td>Tech Lead</td></tr>
+      <tr><td>R-03</td><td>Відсутність ключового розробника</td><td>Низька</td><td>Високий</td><td>🟡 Суттєвий</td><td>Передати (документування + backup)</td><td>PM</td></tr>
+      <tr><td>R-04</td><td>Низька adoption нової системи</td><td>Середня</td><td>Середній</td><td>🟡 Суттєвий</td><td>Зменшити (навчання, UX тестування)</td><td>BA + PO</td></tr>
+    </tbody>
+  </table></div>
+  <div class="highlight" style="margin-top:1rem;"><strong>🎯 Стратегії реагування:</strong> Avoid (уникнути) · Mitigate (зменшити) · Transfer (передати, страховка) · Accept (прийняти) · Escalate (ескалувати)</div>
 </div>
 
-<div class="section"><div class="page-nav"><a href="ba-03.html">← BA-03</a><a href="ba-05.html" class="next">BA-05: Моделювання →</a></div></div>
+<div class="section">
+  <div class="section-title">📊 Продуктові метрики — AARRR фреймворк</div>
+  <div class="card-grid">
+    <div class="card" style="border-color:rgba(0,212,255,0.3);"><div style="font-size:2rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--a1);">A</div><h3>Acquisition (Залучення)</h3><p style="color:var(--text2);">Звідки приходять користувачі? Organic, paid, referral. Метрики: Install Rate, CAC, channel conversion.</p></div>
+    <div class="card" style="border-color:rgba(123,47,255,0.3);"><div style="font-size:2rem;font-family:'Syne',sans-serif;font-weight:800;color:#a78bfa;">A</div><h3>Activation (Активація)</h3><p style="color:var(--text2);">Чи отримали перший позитивний досвід? Onboarding completion rate, час до "aha moment".</p></div>
+    <div class="card" style="border-color:rgba(0,255,136,0.3);"><div style="font-size:2rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--a3);">R</div><h3>Retention (Утримання)</h3><p style="color:var(--text2);">Повертаються? DAU/MAU ratio, cohort retention, churn rate. Найважливіша метрика для SaaS.</p></div>
+    <div class="card" style="border-color:rgba(255,107,53,0.3);"><div style="font-size:2rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--a4);">R</div><h3>Referral (Рекомендації)</h3><p style="color:var(--text2);">Рекомендують іншим? NPS, viral coefficient, referral program conversion.</p></div>
+    <div class="card" style="border-color:rgba(255,215,0,0.3);"><div style="font-size:2rem;font-family:'Syne',sans-serif;font-weight:800;color:var(--a5);">R</div><h3>Revenue (Монетизація)</h3><p style="color:var(--text2);">Платять? ARPU, LTV, MRR, conversion rate від free до paid. ROI = (Revenue - CAC) / CAC.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🧪 A/B тестування для BA</div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Сформулюй гіпотезу</h4><p>Формат: "Якщо ми [зміна], то [метрика] зросте на [X]%, тому що [обґрунтування]".<br>Приклад: "Якщо замінити 'Купити зараз' на 'Спробувати безкоштовно', conversion rate зросте на 15%."</p></div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Визнач primary metric</h4><p>Одна головна метрика яку вимірюємо. Наприклад: click-through rate кнопки CTA. Також визнач secondary metrics.</p></div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Розподіли трафік 50/50</h4><p>Контрольна група A (поточна версія) та тестова група B (зміна). Рандомізація обов'язкова.</p></div></div>
+    <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Збери достатньо даних</h4><p>Мінімум 100-500 конверсій на варіант. Тривалість: мінімум 2 тижні щоб врахувати seasonality.</p></div></div>
+    <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Аналіз та рішення</h4><p>Чи різниця статистично значима (p &lt; 0.05)? Якщо так — впроваджуємо переможця. Якщо ні — наступний тест.</p></div></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📈 Ключові фінансові метрики</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Метрика</th><th>Формула</th><th>Що показує</th><th>BA питання</th></tr></thead>
+    <tbody>
+      <tr><td><strong>CAC</strong></td><td>Marketing Spend / New Customers</td><td>Вартість залучення клієнта</td><td>Скільки можемо витратити на залучення?</td></tr>
+      <tr><td><strong>LTV</strong></td><td>ARPU × Avg. Customer Lifetime</td><td>Прибуток з одного клієнта за весь час</td><td>LTV повинен бути &gt;3x CAC</td></tr>
+      <tr><td><strong>CAGR</strong></td><td>(End/Start)^(1/n) - 1</td><td>Середньорічний темп зростання</td><td>Який цільовий CAGR на 3 роки?</td></tr>
+      <tr><td><strong>MRR</strong></td><td>Сума всіх місячних підписок</td><td>Recurring дохід (SaaS)</td><td>Який target MRR на кінець кварталу?</td></tr>
+      <tr><td><strong>Churn Rate</strong></td><td>Відписки / Початкова база × 100%</td><td>% клієнтів що пішли</td><td>Який допустимий churn для нашої моделі?</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Назви 5 категорій ризиків і приведи по одному прикладу кожного.</li>
+    <li>Що таке Risk Register і які поля він повинен містити?</li>
+    <li>Поясни AARRR фреймворк. Яка метрика найважливіша для SaaS?</li>
+    <li>Як правильно сформулювати гіпотезу для A/B тесту?</li>
+    <li>Що таке CAGR і навіщо він потрібен BA?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">Risk Register</span><span class="glossary-def">Документ що фіксує всі ризики з їх оцінкою, власниками та стратегіями реагування</span></div>
+    <div class="glossary-item"><span class="glossary-term">AARRR</span><span class="glossary-def">Acquisition, Activation, Retention, Referral, Revenue — фреймворк продуктових метрик</span></div>
+    <div class="glossary-item"><span class="glossary-term">CAC</span><span class="glossary-def">Customer Acquisition Cost — вартість залучення одного нового клієнта</span></div>
+    <div class="glossary-item"><span class="glossary-term">LTV</span><span class="glossary-def">Lifetime Value — загальний прибуток від одного клієнта за весь час роботи</span></div>
+    <div class="glossary-item"><span class="glossary-term">CAGR</span><span class="glossary-def">Compound Annual Growth Rate — середньорічний темп зростання з урахуванням компаундування</span></div>
+    <div class="glossary-item"><span class="glossary-term">Churn Rate</span><span class="glossary-def">Відсоток клієнтів що відписались або припинили користуватися продуктом</span></div>
+    <div class="glossary-item"><span class="glossary-term">A/B Test</span><span class="glossary-def">Контрольований експеримент де порівнюються дві версії для визначення кращої</span></div>
+    <div class="glossary-item"><span class="glossary-term">North Star Metric</span><span class="glossary-def">Єдина ключова метрика що відображає основну цінність продукту</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="ba-03.html">← BA-03</a><a href="ba-05.html" class="next">BA-05: BPMN →</a></div></div>
 <footer class="footer"><p>BA & SA Mastery · BA-04 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
 </body></html>

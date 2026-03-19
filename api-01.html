@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>API-01 · Архітектура систем — BA & SA Mastery</title>
+<link rel="stylesheet" href="../styles.css">
+</head>
+<body>
+<nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">API-01</span></nav>
+
+<div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
+  <div class="hero-badge fade-up">🏗 Модуль API-01</div>
+  <h1 class="fade-up d1">Архітектура систем:<br><span class="grad">шари, типи та взаємодія</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Розуміння архітектури дозволяє BA описувати вимоги з урахуванням технічних обмежень і грамотно спілкуватися з архітекторами та розробниками.</p>
+</div>
+
+<!-- SECTION: 3-рівнева модель -->
+<div class="section">
+  <div class="section-title">🧱 Що таке архітектура системи?</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">Архітектура системи — це структуроване уявлення про всі основні компоненти інформаційної системи, їхню взаємодію, потоки даних, технології та правила. Вона відповідає на три питання:</p>
+  <div class="card-grid">
+    <div class="card"><span class="card-icon">🔍</span><h3>З чого складається?</h3><p style="color:var(--text2);">Перелік компонентів: UI, API, сервіси, бази даних, інтеграції, інфраструктура.</p></div>
+    <div class="card"><span class="card-icon">🔗</span><h3>Як вони працюють разом?</h3><p style="color:var(--text2);">Потоки даних, протоколи, синхронні та асинхронні взаємодії між компонентами.</p></div>
+    <div class="card"><span class="card-icon">🚀</span><h3>Як забезпечити якість?</h3><p style="color:var(--text2);">Масштабованість, безпека, надійність, продуктивність — NFR вимоги.</p></div>
+  </div>
+</div>
+
+<!-- SECTION: 3-tier -->
+<div class="section">
+  <div class="section-title">🗂 Типова 3-рівнева модель (3-tier)</div>
+
+  <div class="diagram-wrap">
+    <svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto;">
+      <defs>
+        <marker id="a1" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><polygon points="0 0,8 3,0 6" fill="#00d4ff"/></marker>
+        <marker id="a2" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><polygon points="8 0,0 3,8 6" fill="#00ff88"/></marker>
+      </defs>
+      <!-- Layer 1: Presentation -->
+      <rect x="50" y="20" width="600" height="72" rx="12" fill="rgba(247,37,133,0.08)" stroke="rgba(247,37,133,0.4)" stroke-width="1.5"/>
+      <text x="200" y="48" fill="#f72585" font-family="Syne,sans-serif" font-size="11" font-weight="700">PRESENTATION LAYER</text>
+      <text x="200" y="67" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Інтерфейс користувача — те що бачить і з чим взаємодіє юзер</text>
+      <rect x="420" y="30" width="90" height="24" rx="6" fill="rgba(247,37,133,0.15)" stroke="rgba(247,37,133,0.3)" stroke-width="1"/>
+      <text x="465" y="47" text-anchor="middle" fill="#f72585" font-family="Inter,sans-serif" font-size="9">React / Vue</text>
+      <rect x="520" y="30" width="90" height="24" rx="6" fill="rgba(247,37,133,0.15)" stroke="rgba(247,37,133,0.3)" stroke-width="1"/>
+      <text x="565" y="47" text-anchor="middle" fill="#f72585" font-family="Inter,sans-serif" font-size="9">Mobile App</text>
+
+      <!-- Arrow down -->
+      <line x1="350" y1="96" x2="350" y2="118" stroke="#00d4ff" stroke-width="2" marker-end="url(#a1)"/>
+      <text x="358" y="112" fill="#00d4ff" font-family="Inter,sans-serif" font-size="8">HTTP / API</text>
+
+      <!-- Layer 2: Business Logic -->
+      <rect x="50" y="122" width="600" height="72" rx="12" fill="rgba(0,212,255,0.07)" stroke="rgba(0,212,255,0.4)" stroke-width="1.5"/>
+      <text x="200" y="150" fill="#00d4ff" font-family="Syne,sans-serif" font-size="11" font-weight="700">APPLICATION LAYER</text>
+      <text x="200" y="169" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Бізнес-логіка, обробка запитів, API endpoints, сервіси</text>
+      <rect x="420" y="132" width="80" height="24" rx="6" fill="rgba(0,212,255,0.12)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+      <text x="460" y="149" text-anchor="middle" fill="#00d4ff" font-family="Inter,sans-serif" font-size="9">Node.js</text>
+      <rect x="510" y="132" width="80" height="24" rx="6" fill="rgba(0,212,255,0.12)" stroke="rgba(0,212,255,0.3)" stroke-width="1"/>
+      <text x="550" y="149" text-anchor="middle" fill="#00d4ff" font-family="Inter,sans-serif" font-size="9">Python / Java</text>
+      <rect x="420" y="161" width="170" height="20" rx="4" fill="rgba(0,212,255,0.08)" stroke="rgba(0,212,255,0.2)" stroke-width="1"/>
+      <text x="505" y="175" text-anchor="middle" fill="#8892b0" font-family="Inter,sans-serif" font-size="8">Автентифікація · Авторизація · Кешування</text>
+
+      <!-- Arrow down -->
+      <line x1="350" y1="198" x2="350" y2="220" stroke="#00d4ff" stroke-width="2" marker-end="url(#a1)"/>
+      <text x="358" y="214" fill="#00d4ff" font-family="Inter,sans-serif" font-size="8">SQL / ORM</text>
+
+      <!-- Layer 3: Data -->
+      <rect x="50" y="224" width="600" height="72" rx="12" fill="rgba(0,255,136,0.07)" stroke="rgba(0,255,136,0.4)" stroke-width="1.5"/>
+      <text x="200" y="252" fill="#00ff88" font-family="Syne,sans-serif" font-size="11" font-weight="700">DATA LAYER</text>
+      <text x="200" y="271" fill="#8892b0" font-family="Inter,sans-serif" font-size="9">Бази даних, сховища, кеші, файлові системи</text>
+      <rect x="420" y="234" width="70" height="24" rx="6" fill="rgba(0,255,136,0.12)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/>
+      <text x="455" y="251" text-anchor="middle" fill="#00ff88" font-family="Inter,sans-serif" font-size="9">PostgreSQL</text>
+      <rect x="500" y="234" width="60" height="24" rx="6" fill="rgba(0,255,136,0.12)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/>
+      <text x="530" y="251" text-anchor="middle" fill="#00ff88" font-family="Inter,sans-serif" font-size="9">MongoDB</text>
+      <rect x="570" y="234" width="55" height="24" rx="6" fill="rgba(0,255,136,0.12)" stroke="rgba(0,255,136,0.3)" stroke-width="1"/>
+      <text x="597" y="251" text-anchor="middle" fill="#00ff88" font-family="Inter,sans-serif" font-size="9">Redis</text>
+    </svg>
+  </div>
+
+  <div class="table-wrap"><table>
+    <thead><tr><th>Рівень</th><th>Опис</th><th>Технології</th><th>BA вимоги до цього рівня</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:#f72585;">Presentation</strong></td><td>Інтерфейс користувача</td><td>React, Vue, Angular, Mobile</td><td>UX вимоги, responsive, accessibility, локалізація</td></tr>
+      <tr><td><strong style="color:#00d4ff;">Application</strong></td><td>Бізнес-логіка та API</td><td>Node.js, Python, Java, .NET</td><td>Бізнес-правила, авторизація, валідація, ліміти</td></tr>
+      <tr><td><strong style="color:#00ff88;">Data</strong></td><td>Зберігання даних</td><td>PostgreSQL, MongoDB, Redis</td><td>Структура даних, retention, шифрування, backup</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="highlight"><strong>🎯 BA Insight:</strong> Коли клієнт каже "хочу звіт за останній місяць" — це вимога до Data Layer. Коли "хочу сповіщення при певній умові" — Business Logic Layer. Знаючи шари ти пишеш точніші вимоги і відразу до правильного компонента.</div>
+</div>
+
+<!-- SECTION: Типи архітектур -->
+<div class="section">
+  <div class="section-title">🏛 Типи архітектур</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Тип</th><th>Опис</th><th>Переваги</th><th>Недоліки</th><th>Коли обирати</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Монолітна</strong></td><td>Вся логіка в одному додатку</td><td>Простота, легкий дебаг</td><td>Важко масштабувати</td><td>MVP, малі команди</td></tr>
+      <tr><td><strong>Клієнт-серверна</strong></td><td>Frontend окремо від backend</td><td>Розподіл відповідальності</td><td>Latency запитів</td><td>Більшість веб-додатків</td></tr>
+      <tr><td><strong>Мікросервісна</strong></td><td>Кожна функція — окремий сервіс</td><td>Масштабованість, незалежні деплойменти</td><td>Складність, overhead</td><td>Enterprise, 10+ команд</td></tr>
+      <tr><td><strong>SOA</strong></td><td>Сервіси через шину (ESB)</td><td>Формалізована інтеграція</td><td>Дорого, складно</td><td>Банки, держ. системи</td></tr>
+      <tr><td><strong>Serverless / FaaS</strong></td><td>Функції в хмарі без сервера</td><td>Авто-масштабування, платиш за виклики</td><td>Cold start, вендор-lock</td><td>Event-driven, нерегулярне навантаження</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- SECTION: Компоненти -->
+<div class="section">
+  <div class="section-title">🔧 Компоненти системи — що BA має знати</div>
+  <div class="card-grid">
+    <div class="card"><span class="card-icon">🖥</span><h3>UI/UX</h3><p style="color:var(--text2);">Інтерфейс користувача. BA описує: wireframes, user flows, responsive вимоги, accessibility (WCAG).</p></div>
+    <div class="card"><span class="card-icon">🔌</span><h3>API</h3><p style="color:var(--text2);">Механізм доступу до логіки. BA описує: endpoints, параметри, response формат, статус-коди, помилки.</p></div>
+    <div class="card"><span class="card-icon">⚙️</span><h3>Сервіси</h3><p style="color:var(--text2);">Бізнес-логіка. BA описує: правила обробки, валідацію, бізнес-правила, flow між сервісами.</p></div>
+    <div class="card"><span class="card-icon">🗄</span><h3>База даних</h3><p style="color:var(--text2);">Зберігання даних. BA описує: які дані зберігати, як довго, хто має доступ, шифрування.</p></div>
+    <div class="card"><span class="card-icon">🔗</span><h3>Інтеграції</h3><p style="color:var(--text2);">Зовнішні системи: CRM, платіжні шлюзи, email-сервіси. BA описує: формат, частоту, помилки.</p></div>
+    <div class="card"><span class="card-icon">🚀</span><h3>DevOps-інфра</h3><p style="color:var(--text2);">CI/CD, моніторинг, хостинг. BA описує SLA, uptime вимоги, backup політику.</p></div>
+    <div class="card"><span class="card-icon">🔐</span><h3>Безпека</h3><p style="color:var(--text2);">Авторизація, аутентифікація, шифрування. BA описує ролі, дозволи, GDPR вимоги.</p></div>
+    <div class="card"><span class="card-icon">⚡</span><h3>Кешування</h3><p style="color:var(--text2);">Redis, Memcached для швидкості. BA описує TTL (time-to-live) та які дані можна кешувати.</p></div>
+    <div class="card"><span class="card-icon">📨</span><h3>Черги / Events</h3><p style="color:var(--text2);">Kafka, RabbitMQ для асинхронної обробки. BA описує: тригери, retry-логіку, порядок обробки.</p></div>
+  </div>
+</div>
+
+<!-- SECTION: Синхронні vs Асинхронні -->
+<div class="section">
+  <div class="section-title">⚡ Синхронні vs Асинхронні запити</div>
+  <div class="two-col">
+    <div class="card" style="border-color:rgba(0,212,255,0.3);">
+      <h3 style="color:var(--a1);margin-bottom:.8rem;">🔄 Синхронний запит</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;">Клієнт відправляє запит і <strong>чекає</strong> відповіді. Програма заблокована до отримання результату.</p>
+      <div class="code-block" style="font-size:.8rem;"><span class="cm">// Клієнт чекає відповіді сервера</span>
+<span class="kw">GET</span> /api/user/123
+<span class="cm">→ Браузер "висить" поки</span>
+<span class="cm">  сервер не відповів</span>
+<span class="cm">→ Отримав відповідь → продовжує</span></div>
+      <ul class="checklist" style="font-size:.83rem;margin-top:.8rem;">
+        <li>Простота реалізації</li>
+        <li>Зрозумілий потік виконання</li>
+        <li>Блокує програму до відповіді</li>
+        <li>Для: CLI, простих задач, форм</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(0,255,136,0.3);">
+      <h3 style="color:var(--a3);margin-bottom:.8rem;">⚡ Асинхронний запит</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;">Клієнт відправляє запит і <strong>одразу продовжує</strong> роботу. Результат обробляється пізніше.</p>
+      <div class="code-block" style="font-size:.8rem;"><span class="cm">// JS не чекає — виконується далі</span>
+<span class="fn">fetch</span>(<span class="str">'/api/user/123'</span>)
+  .<span class="fn">then</span>(r => r.<span class="fn">json</span>())
+  .<span class="fn">then</span>(data => <span class="fn">render</span>(data));
+<span class="cm">// Цей код виконається ЗРАЗУ</span>
+<span class="cm">// не чекаючи на fetch ↑</span>
+<span class="fn">doSomethingElse</span>();</div>
+      <ul class="checklist" style="font-size:.83rem;margin-top:.8rem;">
+        <li>UI залишається чутливим</li>
+        <li>Краща продуктивність</li>
+        <li>Складніша логіка обробки</li>
+        <li>Для: веб-додатки, мікросервіси</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="table-wrap" style="margin-top:1.5rem;"><table>
+    <thead><tr><th>Характеристика</th><th>Синхронний</th><th>Асинхронний</th></tr></thead>
+    <tbody>
+      <tr><td>Очікування відповіді</td><td>✅ Так (блокує)</td><td>❌ Ні (не блокує)</td></tr>
+      <tr><td>Складність реалізації</td><td>Низька</td><td>Середня / висока</td></tr>
+      <tr><td>Продуктивність при навантаженні</td><td>Нижча</td><td>Вища</td></tr>
+      <tr><td>Підходить для</td><td>CLI, прості послідовні задачі</td><td>Веб-інтерфейси, мікросервіси</td></tr>
+    </tbody>
+  </table></div>
+
+  <div class="card" style="margin-top:1.5rem; border-color:rgba(255,215,0,0.3);">
+    <h3 style="color:var(--a5);margin-bottom:.8rem;">📧 Приклад: Email-підтвердження при реєстрації</h3>
+    <div class="table-wrap"><table>
+      <thead><tr><th>Підхід</th><th>Як працює</th><th>UX ефект</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Синхронний</strong></td><td>Реєстрація → створення акаунту → генерація email → відправка → показ "Готово"</td><td>Користувач чекає 3-5 секунд</td></tr>
+        <tr><td><strong>Асинхронний</strong></td><td>Реєстрація → акаунт створено → "Готово" → email відправляється у черзі</td><td>Відповідь миттєва, лист через секунди</td></tr>
+      </tbody>
+    </table></div>
+    <div class="highlight green" style="margin-top:.8rem;"><strong>🎯 BA вимога:</strong> "Реєстрація має відповідати протягом 1 секунди. Email-підтвердження надсилається асинхронно протягом 2 хвилин."</div>
+  </div>
+</div>
+
+<!-- SECTION: Роль аналітика -->
+<div class="section">
+  <div class="section-title">🎯 Як BA працює з архітектурою</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Фокус</th><th>Дії BA</th><th>Інструменти</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Розуміння існуючої</strong></td><td>Вивчає схеми, API-документацію, джерела даних, мапи інтеграцій</td><td>Swagger, Confluence, draw.io</td></tr>
+      <tr><td><strong>Збір вимог</strong></td><td>Визначає вимоги з урахуванням технічних обмежень</td><td>Інтерв'ю, воркшопи, BRD</td></tr>
+      <tr><td><strong>Опис інтеграцій</strong></td><td>Формує специфікації API, формати даних, точки входу</td><td>OpenAPI/Swagger, Postman</td></tr>
+      <tr><td><strong>Моделювання змін</strong></td><td>BPMN/DFD/Sequence diagrams для нових сценаріїв</td><td>Camunda, PlantUML, Miro</td></tr>
+      <tr><td><strong>Тестування логіки</strong></td><td>Перевірка наскрізних кейсів, цілісності сценаріїв</td><td>Postman, DevTools</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<!-- SECTION: Практичний кейс -->
+<div class="section">
+  <div class="section-title">💡 Практичний кейс: Інтеграція CRM з інтернет-магазином</div>
+  <div class="card" style="border-color:rgba(0,255,136,0.3);">
+    <h3 style="color:var(--a3);margin-bottom:1rem;">🛒 Запит: "Інтегрувати CRM з інтернет-магазином"</h3>
+    <div class="steps">
+      <div class="step"><div class="step-num">1</div><div class="step-body"><h4>Аналіз поточної архітектури</h4><p>Де знаходиться CRM? Яка база даних? Який API є? BA вивчає схеми і документацію обох систем.</p></div></div>
+      <div class="step"><div class="step-num">2</div><div class="step-body"><h4>Збір вимог до інтеграції</h4><p>Які дані передавати (клієнти, замовлення)? Хто ініціює синхронізацію? В який момент? Як часто?</p></div></div>
+      <div class="step"><div class="step-num">3</div><div class="step-body"><h4>Вивчення технічних можливостей</h4><p>Чи є API у CRM? Який формат (JSON/XML)? Синхронна чи асинхронна інтеграція? Rate limits?</p></div></div>
+      <div class="step"><div class="step-num">4</div><div class="step-body"><h4>Опис архітектурного рішення</h4><p>Діаграма потоків даних + сценарії обміну + обробка помилок + SLA для інтеграції.</p></div></div>
+      <div class="step"><div class="step-num">5</div><div class="step-body"><h4>Передача в розробку</h4><p>Специфікація API (OpenAPI) + User Stories + Acceptance Criteria з прикладами даних.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION: Інструменти -->
+<div class="section">
+  <div class="section-title">🛠 Інструменти BA для роботи з архітектурою</div>
+  <div class="card-grid">
+    <div class="card"><span class="card-icon">📐</span><h3>Draw.io / Lucidchart</h3><p style="color:var(--text2);">Побудова архітектурних схем та діаграм. Безкоштовний draw.io інтегрується з Google Drive і Confluence.</p></div>
+    <div class="card"><span class="card-icon">🔌</span><h3>Postman / Swagger</h3><p style="color:var(--text2);">Перевірка API, знайомство з архітектурою REST. Swagger — документація та тестування в браузері.</p></div>
+    <div class="card"><span class="card-icon">📝</span><h3>Confluence / Notion</h3><p style="color:var(--text2);">Документування архітектурних рішень, ADR (Architecture Decision Records), схеми з поясненнями.</p></div>
+    <div class="card"><span class="card-icon">🌱</span><h3>PlantUML / Mermaid</h3><p style="color:var(--text2);">Графічне моделювання через текст. Sequence diagrams, C4 Model — можна зберігати в Git разом з кодом.</p></div>
+    <div class="card"><span class="card-icon">🗃</span><h3>dbdiagram.io</h3><p style="color:var(--text2);">ER-діаграми для моделювання структури бази даних. Простий DSL синтаксис для опису таблиць і зв'язків.</p></div>
+    <div class="card"><span class="card-icon">🏗</span><h3>C4 Model</h3><p style="color:var(--text2);">4-рівневий підхід до візуалізації: Context → Container → Component → Code. Зрозумілий всім стейкхолдерам.</p></div>
+  </div>
+</div>
+
+<!-- SECTION: Self-check -->
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Які три рівні в 3-tier архітектурі і що в кожному знаходиться?</li>
+    <li>Чим моноліт відрізняється від мікросервісів? Коли що обирати?</li>
+    <li>Яка різниця між синхронним та асинхронним запитом? Наведи приклад з роботи BA.</li>
+    <li>Для чого потрібен Kafka і чим він відрізняється від прямого API-виклику?</li>
+    <li>Які питання BA ставить при аналізі інтеграції двох систем?</li>
+    <li>Що таке C4 Model і для якої аудиторії кожний рівень?</li>
+  </ul></div>
+</div>
+
+<!-- GLOSSARY -->
+<div class="section">
+  <div class="section-title">Глосарій модуля</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">Architecture</span><span class="glossary-def">Структуроване уявлення про компоненти системи, їх взаємодію та принципи побудови</span></div>
+    <div class="glossary-item"><span class="glossary-term">3-tier</span><span class="glossary-def">Тришарова архітектура: Presentation → Application → Data</span></div>
+    <div class="glossary-item"><span class="glossary-term">Microservices</span><span class="glossary-def">Архітектура де кожна бізнес-функція реалізована як окремий незалежний сервіс</span></div>
+    <div class="glossary-item"><span class="glossary-term">API Gateway</span><span class="glossary-def">Єдина точка входу для всіх клієнтів що маршрутизує запити до мікросервісів</span></div>
+    <div class="glossary-item"><span class="glossary-term">Synchronous</span><span class="glossary-def">Запит при якому клієнт чекає відповіді перш ніж продовжити виконання</span></div>
+    <div class="glossary-item"><span class="glossary-term">Asynchronous</span><span class="glossary-def">Запит при якому клієнт не чекає відповіді — продовжує роботу, результат приходить пізніше</span></div>
+    <div class="glossary-item"><span class="glossary-term">Message Queue</span><span class="glossary-def">Черга повідомлень для асинхронної комунікації між сервісами (Kafka, RabbitMQ)</span></div>
+    <div class="glossary-item"><span class="glossary-term">Cache / Redis</span><span class="glossary-def">Швидке сховище в пам'яті для збереження часто запитуваних даних</span></div>
+    <div class="glossary-item"><span class="glossary-term">Serverless</span><span class="glossary-def">Модель де код виконується у хмарі як функції без управління сервером</span></div>
+    <div class="glossary-item"><span class="glossary-term">ADR</span><span class="glossary-def">Architecture Decision Record — документ що фіксує архітектурне рішення та його обґрунтування</span></div>
+    <div class="glossary-item"><span class="glossary-term">SLA</span><span class="glossary-def">Service Level Agreement — угода про рівень сервісу (uptime, response time)</span></div>
+    <div class="glossary-item"><span class="glossary-term">C4 Model</span><span class="glossary-def">4-рівнева модель для візуалізації архітектури: Context, Container, Component, Code</span></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="page-nav">
+    <a href="../index.html">← Головна</a>
+    <a href="api-02.html" class="next">API-02: Проектування API →</a>
+  </div>
+</div>
+
+<footer class="footer"><p>BA & SA Mastery · API-01 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
+</body>
+</html>
