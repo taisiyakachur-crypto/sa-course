@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BA & SA Mastery — Повний курс системного аналітика</title>
+<link rel="stylesheet" href="styles.css">
+<style>
+.hero-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:2.5rem 0;}
+.hero-stat{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.4rem;text-align:center;}
+.hero-stat-num{font-family:'Syne',sans-serif;font-size:2rem;font-weight:800;}
+.hero-stat p{font-size:.82rem;color:var(--text2);margin-top:.3rem;}
+.section-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:1.2rem;margin-top:1.5rem;}
+.module-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:1.5rem;text-decoration:none;color:inherit;transition:all .25s;position:relative;overflow:hidden;}
+.module-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--c1),var(--c2));}
+.module-card:hover{transform:translateY(-5px);border-color:rgba(0,212,255,0.35);box-shadow:0 16px 48px rgba(0,0,0,0.4);}
+.module-card .num{font-family:'JetBrains Mono',monospace;font-size:.7rem;color:var(--text3);margin-bottom:.5rem;}
+.module-card h3{font-size:.98rem;line-height:1.4;margin-bottom:.5rem;}
+.module-card p{font-size:.8rem;color:var(--text2);flex:1;}
+.module-card .tags{display:flex;gap:.4rem;flex-wrap:wrap;margin-top:.9rem;}
+.glow-line{height:1px;background:linear-gradient(90deg,transparent,var(--a1),var(--a2),transparent);margin:3rem 0;opacity:.4;}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <a href="index.html" class="nav-logo">⚡ BA & SA Mastery</a>
+  <a href="pages/links.html" style="color:var(--a1);text-decoration:none;font-size:.85rem;font-weight:600;">🔗 Корисні посилання</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-badge fade-up">🎓 Персональний курс · Системний аналіз та BA</div>
+  <h1 class="fade-up d1">Від бізнес-аналізу<br>до <span class="grad">системної архітектури</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);font-size:1.1rem;margin-top:1.2rem;max-width:600px;margin-left:auto;margin-right:auto;">
+    Повний практичний курс для BA та системних аналітиків: SQL, API, UML, BPMN, архітектура систем, вимоги, методології та багато іншого.
+  </p>
+  <div class="hero-grid fade-up d3">
+    <div class="hero-stat"><div class="hero-stat-num" style="background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">9</div><p>модулів системного аналізу</p></div>
+    <div class="hero-stat"><div class="hero-stat-num" style="background:linear-gradient(135deg,var(--a3),var(--a1));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">12</div><p>модулів БД і Power BI</p></div>
+    <div class="hero-stat"><div class="hero-stat-num" style="background:linear-gradient(135deg,var(--a4),var(--a5));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">50+</div><p>технік бізнес-аналізу</p></div>
+    <div class="hero-stat"><div class="hero-stat-num" style="background:linear-gradient(135deg,var(--a2),var(--a4));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">∞</div><p>практичних кейсів</p></div>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- BLOCK 1: Системний аналіз -->
+<div class="section">
+  <div class="section-title">🔬 Системний аналіз — основи та методологія</div>
+  <div class="section-grid">
+    <a href="pages/sa-01.html" class="module-card" style="--c1:#00d4ff;--c2:#7b2fff;">
+      <div class="num">МОДУЛЬ SA-01</div>
+      <h3>Що таке системний аналіз</h3>
+      <p>Система, підсистема, середовище. Структуровані vs слабоструктуровані задачі. Мета СА.</p>
+      <div class="tags"><span class="tag tag-cyan">Основи</span><span class="tag tag-purple">SDLC</span></div>
+    </a>
+    <a href="pages/sa-02.html" class="module-card" style="--c1:#7b2fff;--c2:#ff6b35;">
+      <div class="num">МОДУЛЬ SA-02</div>
+      <h3>Властивості систем і системне мислення</h3>
+      <p>Ієрархічність, стійкість, зворотний зв'язок. Петлі посилення/балансування. Системні архетипи.</p>
+      <div class="tags"><span class="tag tag-purple">Systems Thinking</span><span class="tag tag-orange">Архетипи</span></div>
+    </a>
+    <a href="pages/sa-03.html" class="module-card" style="--c1:#00ff88;--c2:#00d4ff;">
+      <div class="num">МОДУЛЬ SA-03</div>
+      <h3>Аналіз та Синтез — серце системного аналізу</h3>
+      <p>Декомпозиція: проблема → підпроблеми. Синтез: об'єднання частин. Дерево цілей.</p>
+      <div class="tags"><span class="tag tag-green">Декомпозиція</span><span class="tag tag-cyan">Синтез</span></div>
+    </a>
+    <a href="pages/sa-04.html" class="module-card" style="--c1:#ffd700;--c2:#ff6b35;">
+      <div class="num">МОДУЛЬ SA-04</div>
+      <h3>Методологія системного аналізу</h3>
+      <p>SADT/IDEF0, ISO/IEC 15288, IEEE 12207. Стандарти та методи.</p>
+      <div class="tags"><span class="tag tag-gold">IDEF0</span><span class="tag tag-orange">ISO стандарти</span></div>
+    </a>
+    <a href="pages/sa-05.html" class="module-card" style="--c1:#ff6b35;--c2:#7b2fff;">
+      <div class="num">МОДУЛЬ SA-05</div>
+      <h3>Інструменти системного аналізу</h3>
+      <p>Морфологічний аналіз, дерево рішень, сценарний аналіз, SWOT, PEST, аналіз альтернатив.</p>
+      <div class="tags"><span class="tag tag-orange">SWOT/PEST</span><span class="tag tag-purple">Miro/Draw.io</span></div>
+    </a>
+    <a href="pages/sa-06.html" class="module-card" style="--c1:#00d4ff;--c2:#00ff88;">
+      <div class="num">МОДУЛЬ SA-06</div>
+      <h3>Побудова систем і вимог</h3>
+      <p>BPMN, DFD, UML-діаграми. Функціональні, нефункціональні, бізнес-вимоги.</p>
+      <div class="tags"><span class="tag tag-cyan">BPMN</span><span class="tag tag-green">UML</span></div>
+    </a>
+    <a href="pages/sa-07.html" class="module-card" style="--c1:#7b2fff;--c2:#ffd700;">
+      <div class="num">МОДУЛЬ SA-07</div>
+      <h3>Прийняття рішень і оптимізація</h3>
+      <p>Alternative analysis, дерево рішень, MCDA, матриця ризиків ймовірність × наслідок.</p>
+      <div class="tags"><span class="tag tag-purple">Decision Tree</span><span class="tag tag-gold">MCDA</span></div>
+    </a>
+    <a href="pages/sa-08.html" class="module-card" style="--c1:#00ff88;--c2:#7b2fff;">
+      <div class="num">МОДУЛЬ SA-08</div>
+      <h3>Документація в системному аналізі</h3>
+      <p>BRD, SRS, SLA, технічні специфікації. Стандарти оформлення та вимоги до документів.</p>
+      <div class="tags"><span class="tag tag-green">BRD</span><span class="tag tag-purple">SRS</span></div>
+    </a>
+    <a href="pages/sa-09.html" class="module-card" style="--c1:#ffd700;--c2:#00d4ff;">
+      <div class="num">МОДУЛЬ SA-09</div>
+      <h3>СА в IT/ERP/CRM/BI системах</h3>
+      <p>Інтеграції, інформаційні потоки, ролі. MVP, TOGAF, ARIS. Реальні кейси SAP, Oracle.</p>
+      <div class="tags"><span class="tag tag-gold">ERP/CRM</span><span class="tag tag-cyan">TOGAF</span></div>
+    </a>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- BLOCK 2: Бази даних -->
+<div class="section">
+  <div class="section-title">🗄 Бази даних, SQL та Power BI</div>
+  <div class="section-grid">
+    <a href="pages/db-01.html" class="module-card" style="--c1:#00d4ff;--c2:#7b2fff;">
+      <div class="num">DB-01</div>
+      <h3>Основи даних і баз даних</h3>
+      <p>Типи даних, що таке БД. Реляційні, документоорієнтовані, графові. Excel vs БД.</p>
+      <div class="tags"><span class="tag tag-cyan">Basics</span><span class="tag tag-purple">SQL vs NoSQL</span></div>
+    </a>
+    <a href="pages/db-02.html" class="module-card" style="--c1:#00ff88;--c2:#00d4ff;">
+      <div class="num">DB-02</div>
+      <h3>Реляційні БД та нормалізація</h3>
+      <p>PK, FK, зв'язки 1:1, 1:N, M:N. Нормалізація 1NF → 2NF → 3NF. Практичний кейс.</p>
+      <div class="tags"><span class="tag tag-green">SQL</span><span class="tag tag-cyan">Normalization</span></div>
+    </a>
+    <a href="pages/db-03.html" class="module-card" style="--c1:#ffd700;--c2:#ff6b35;">
+      <div class="num">DB-03</div>
+      <h3>SQL — запити, JOIN, агрегації</h3>
+      <p>SELECT, WHERE, JOIN (INNER/LEFT/RIGHT), GROUP BY, HAVING, ORDER BY, підзапити.</p>
+      <div class="tags"><span class="tag tag-gold">SQL Queries</span><span class="tag tag-orange">JOIN</span></div>
+    </a>
+    <a href="pages/db-04.html" class="module-card" style="--c1:#7b2fff;--c2:#00ff88;">
+      <div class="num">DB-04</div>
+      <h3>Розширений SQL та оптимізація</h3>
+      <p>Вікові функції, CTE vs Stored Procedure, ACID, черги повідомлень Kafka/RabbitMQ.</p>
+      <div class="tags"><span class="tag tag-purple">Advanced SQL</span><span class="tag tag-green">ACID</span></div>
+    </a>
+    <a href="pages/db-05.html" class="module-card" style="--c1:#ff6b35;--c2:#00d4ff;">
+      <div class="num">DB-05</div>
+      <h3>Power BI — підключення та моделювання</h3>
+      <p>ETL, Power Query, Star Schema, DAX функції. Інтеграція з SQL Server та Excel.</p>
+      <div class="tags"><span class="tag tag-orange">Power BI</span><span class="tag tag-cyan">DAX</span></div>
+    </a>
+    <a href="pages/db-06.html" class="module-card" style="--c1:#00d4ff;--c2:#ffd700;">
+      <div class="num">DB-06</div>
+      <h3>Power BI — Звіти та дашборди</h3>
+      <p>Типи візуалізацій, drill-down, slicers, фільтри, Lighthouse, UX аналітичного дашборду.</p>
+      <div class="tags"><span class="tag tag-cyan">Dashboards</span><span class="tag tag-gold">Visualization</span></div>
+    </a>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- BLOCK 3: API та Архітектура -->
+<div class="section">
+  <div class="section-title">🔌 API, Архітектура та SRS</div>
+  <div class="section-grid">
+    <a href="pages/api-01.html" class="module-card" style="--c1:#00ff88;--c2:#7b2fff;">
+      <div class="num">API-01</div>
+      <h3>Архітектура систем — повний огляд</h3>
+      <p>3-рівнева модель, типи архітектур. Синхронні vs асинхронні запити. Роль аналітика.</p>
+      <div class="tags"><span class="tag tag-green">Architecture</span><span class="tag tag-purple">Patterns</span></div>
+    </a>
+    <a href="pages/api-02.html" class="module-card" style="--c1:#7b2fff;--c2:#ff6b35;">
+      <div class="num">API-02</div>
+      <h3>API — проектування та розширені функції</h3>
+      <p>REST, GraphQL, gRPC, WebSocket, Webhooks, OpenAPI, пагінація, версіонування.</p>
+      <div class="tags"><span class="tag tag-purple">REST/GraphQL</span><span class="tag tag-orange">gRPC</span></div>
+    </a>
+    <a href="pages/api-03.html" class="module-card" style="--c1:#ffd700;--c2:#00d4ff;">
+      <div class="num">API-03</div>
+      <h3>Безпека API та типи даних</h3>
+      <p>OAuth2, JWT, RBAC, Rate Limiting, помилки API, логування та трасування.</p>
+      <div class="tags"><span class="tag tag-gold">Security</span><span class="tag tag-cyan">JWT/OAuth2</span></div>
+    </a>
+    <a href="pages/api-04.html" class="module-card" style="--c1:#ff6b35;--c2:#00ff88;">
+      <div class="num">API-04</div>
+      <h3>SOAP Web Services та SRS</h3>
+      <p>SOAP vs REST, WSDL, XML Schema, SoapUI. SRS документ: стандарти, структура, шаблони.</p>
+      <div class="tags"><span class="tag tag-orange">SOAP</span><span class="tag tag-green">SRS/IEEE</span></div>
+    </a>
+    <a href="pages/api-05.html" class="module-card" style="--c1:#00d4ff;--c2:#7b2fff;">
+      <div class="num">API-05</div>
+      <h3>UML-діаграми — повний огляд</h3>
+      <p>Use Case, Sequence, Activity, State, Class діаграми. PlantUML, Mermaid, StarUML.</p>
+      <div class="tags"><span class="tag tag-cyan">UML</span><span class="tag tag-purple">Diagrams</span></div>
+    </a>
+  </div>
+</div>
+
+<div class="glow-line"></div>
+
+<!-- BLOCK 4: Бізнес аналіз -->
+<div class="section">
+  <div class="section-title">📊 Бізнес-аналіз — техніки та методології</div>
+  <div class="section-grid">
+    <a href="pages/ba-01.html" class="module-card" style="--c1:#7b2fff;--c2:#ffd700;">
+      <div class="num">BA-01</div>
+      <h3>Техніки та ключові концепції BA</h3>
+      <p>SWOT, PESTLE, MOST, Gap-аналіз, BPM, CATWOE, MoSCoW. BACCM™ — 6 ключових концептів.</p>
+      <div class="tags"><span class="tag tag-purple">BABOK</span><span class="tag tag-gold">BACCM</span></div>
+    </a>
+    <a href="pages/ba-02.html" class="module-card" style="--c1:#00ff88;--c2:#ff6b35;">
+      <div class="num">BA-02</div>
+      <h3>Методології: Agile, Scrum, Kanban, Waterfall</h3>
+      <p>Порівняння, коли що обирати. DoD vs DoR. PRINCE2 vs PMBOK. Lean методологія.</p>
+      <div class="tags"><span class="tag tag-green">Agile/Scrum</span><span class="tag tag-orange">Waterfall</span></div>
+    </a>
+    <a href="pages/ba-03.html" class="module-card" style="--c1:#ffd700;--c2:#00d4ff;">
+      <div class="num">BA-03</div>
+      <h3>Вимоги: типи, декомпозиція, пріоритизація</h3>
+      <p>BR vs Business Rules. User Story Map. Transition вимоги. Архітектура вимог. INVEST.</p>
+      <div class="tags"><span class="tag tag-gold">Requirements</span><span class="tag tag-cyan">User Stories</span></div>
+    </a>
+    <a href="pages/ba-04.html" class="module-card" style="--c1:#ff6b35;--c2:#7b2fff;">
+      <div class="num">BA-04</div>
+      <h3>Ризики, метрики та A/B тестування</h3>
+      <p>Типи ризиків, Risk Register, техніки ідентифікації. AARRR, North Star, CAGR, A/B тести.</p>
+      <div class="tags"><span class="tag tag-orange">Risk Management</span><span class="tag tag-purple">Metrics</span></div>
+    </a>
+    <a href="pages/ba-05.html" class="module-card" style="--c1:#00d4ff;--c2:#00ff88;">
+      <div class="num">BA-05</div>
+      <h3>Моделювання процесів та нотації</h3>
+      <p>BPMN 2.0, DFD, ERD, C4 Model, ArchiMate, SysML, GRL/i*, DMN, IDEF. Порівняння нотацій.</p>
+      <div class="tags"><span class="tag tag-cyan">BPMN</span><span class="tag tag-green">Modeling</span></div>
+    </a>
+  </div>
+</div>
+
+<!-- LINKS PROMO -->
+<div class="section">
+  <div class="card" style="border-color:rgba(0,212,255,0.3);background:linear-gradient(135deg,rgba(0,212,255,0.05),rgba(123,47,255,0.05));text-align:center;padding:2.5rem;">
+    <div style="font-size:3rem;margin-bottom:1rem;">🔗</div>
+    <h2 style="margin-bottom:.8rem;">Корисні посилання та ресурси</h2>
+    <p style="color:var(--text2);margin-bottom:1.5rem;">Всі відео, курси, документації, інструменти та матеріали в одному місці</p>
+    <a href="pages/links.html" style="display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,var(--a1),var(--a2));color:#000;font-weight:700;font-family:'Syne',sans-serif;padding:.8rem 2rem;border-radius:50px;text-decoration:none;font-size:.9rem;">Відкрити всі посилання →</a>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-nav">
+    <a href="pages/sa-01.html">СА-01</a><a href="pages/sa-02.html">СА-02</a><a href="pages/sa-03.html">СА-03</a>
+    <a href="pages/db-01.html">DB-01</a><a href="pages/db-03.html">DB-SQL</a><a href="pages/db-05.html">Power BI</a>
+    <a href="pages/api-01.html">API-01</a><a href="pages/api-02.html">API-02</a><a href="pages/api-04.html">SRS</a>
+    <a href="pages/ba-01.html">BA-01</a><a href="pages/ba-02.html">Agile</a><a href="pages/ba-05.html">BPMN</a>
+    <a href="pages/links.html">🔗 Посилання</a>
+  </div>
+  <p>BA & SA Mastery · Персональний курс · Всі матеріали зібрані для твого розвитку ⚡</p>
+</footer>
+</body>
+</html>
