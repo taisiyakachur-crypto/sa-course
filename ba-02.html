@@ -1,0 +1,103 @@
+<!DOCTYPE html><html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BA-02 · Методології розробки — BA & SA Mastery</title><link rel="stylesheet" href="../styles.css"></head><body>
+<nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">BA-02</span></nav>
+<div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
+  <div class="hero-badge fade-up">🔄 Модуль BA-02</div>
+  <h1 class="fade-up d1">Методології розробки:<br><span class="grad">Agile, Scrum, Kanban, Waterfall та Lean</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Вибір методології визначає ритм і структуру роботи команди. BA має розуміти всі підходи і знати коли який рекомендувати.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">🔄 Agile — основи та принципи</div>
+  <p style="color:var(--text2);margin-bottom:1.5rem;">Agile — це не методологія, це філософія. 4 цінності і 12 принципів Agile Manifesto визначають спосіб мислення а не конкретні процеси.</p>
+  <div class="card-grid">
+    <div class="card" style="border-color:rgba(0,255,136,0.25);"><span class="card-icon">🔄</span><h3 style="color:var(--a3);">Agile</h3><p>Підхід. Ітеративна розробка, гнучкість до змін, фокус на цінності для клієнта. Найкращий для динамічних продуктів.</p></div>
+    <div class="card" style="border-color:rgba(0,212,255,0.25);"><span class="card-icon">🏃</span><h3 style="color:var(--a1);">Scrum</h3><p>Фреймворк. Чіткі ролі (PO, SM, Dev), артефакти (Backlog, Increment) та церемонії (Planning, Daily, Review, Retro).</p></div>
+    <div class="card" style="border-color:rgba(123,47,255,0.25);"><span class="card-icon">📋</span><h3 style="color:#a78bfa;">Kanban</h3><p>Метод. Візуалізація потоку через дошку, WIP-ліміти, безперервна доставка. Ідеальний для support та ops.</p></div>
+    <div class="card" style="border-color:rgba(255,107,53,0.25);"><span class="card-icon">💧</span><h3 style="color:var(--a4);">Waterfall</h3><p>Послідовний підхід. Кожна фаза стартує після завершення попередньої. Для стабільних вимог і фіксованого обсягу.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">📊 Порівняння методологій</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Критерій</th><th>Waterfall</th><th>Agile/Scrum</th><th>Kanban</th><th>Lean</th></tr></thead>
+    <tbody>
+      <tr><td>Гнучкість до змін</td><td>🔴 Низька</td><td>🟢 Висока</td><td>🟢 Дуже висока</td><td>🟢 Висока</td></tr>
+      <tr><td>Реліз</td><td>Один в кінці</td><td>Кожен спринт</td><td>Постійно</td><td>Pull-based</td></tr>
+      <tr><td>Вимоги</td><td>Фіксовані</td><td>Еволюціонують</td><td>Потік задач</td><td>Мінімум waste</td></tr>
+      <tr><td>Ролі</td><td>PM, BA, Dev, QA</td><td>PO, SM, Dev Team</td><td>Немає чітких ролей</td><td>Гнучкі</td></tr>
+      <tr><td>Документація</td><td>🔴 Детальна</td><td>🟡 Мінімальна</td><td>🟢 Мінімальна</td><td>🟢 Мінімальна</td></tr>
+      <tr><td>Для якого проєкту</td><td>Будівництво, держ.</td><td>SaaS, стартапи</td><td>Support, ops</td><td>Виробництво, DevOps</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🏁 DoR vs DoD — стартові та фінішні прапорці</div>
+  <div class="two-col">
+    <div class="card" style="border-color:rgba(0,212,255,0.3);">
+      <h3 style="color:var(--a1);margin-bottom:.8rem;">📥 Definition of Ready (DoR)</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;">Критерії <strong>перед початком</strong> розробки. Задача готова до спринту якщо:</p>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>Чітко сформульована User Story</li>
+        <li>Є acceptance criteria у GWT форматі</li>
+        <li>Оцінена командою в story points</li>
+        <li>Немає блокерів і залежностей</li>
+        <li>Відповідає принципам INVEST</li>
+      </ul>
+    </div>
+    <div class="card" style="border-color:rgba(0,255,136,0.3);">
+      <h3 style="color:var(--a3);margin-bottom:.8rem;">✅ Definition of Done (DoD)</h3>
+      <p style="color:var(--text2);margin-bottom:1rem;">Критерії <strong>після завершення</strong>. Задача Done коли:</p>
+      <ul class="checklist" style="font-size:.85rem;">
+        <li>Код написаний і пройшов ревью</li>
+        <li>Unit та integration тести пройдено</li>
+        <li>CI/CD pipeline зелений</li>
+        <li>Задеплоєно на staging</li>
+        <li>PO прийняв результат</li>
+        <li>Документація оновлена</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🏛 Scrum-церемонії для BA</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Церемонія</th><th>Коли</th><th>Тривалість</th><th>Роль BA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Sprint Planning</strong></td><td>Початок спринту</td><td>2-4 год</td><td>✅ Обов'язково — пояснення задач командіі</td></tr>
+      <tr><td><strong>Daily Standup</strong></td><td>Щодня</td><td>15 хв</td><td>🟡 Рекомендовано — відповіді на питання</td></tr>
+      <tr><td><strong>Sprint Review</strong></td><td>Кінець спринту</td><td>1-2 год</td><td>✅ Обов'язково — перевірка відповідності вимогам</td></tr>
+      <tr><td><strong>Retrospective</strong></td><td>Кінець спринту</td><td>1-1.5 год</td><td>🟡 Бажано — покращення процесу</td></tr>
+      <tr><td><strong>Backlog Grooming</strong></td><td>Щотижня</td><td>1-2 год</td><td>✅ Обов'язково — уточнення і пріоритизація задач</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">❓ Питання для самоперевірки</div>
+  <div class="card"><ul class="checklist">
+    <li>Чим Agile відрізняється від Scrum? Чим Scrum від Kanban?</li>
+    <li>Яка різниця між DoR і DoD? Коли кожен застосовується?</li>
+    <li>Коли Waterfall краще ніж Agile? Наведи конкретний приклад.</li>
+    <li>Що таке Lean і яка його основна ідея?</li>
+    <li>Яку роль виконує BA у Sprint Planning та Backlog Grooming?</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">Sprint</span><span class="glossary-def">Фіксований цикл розробки (1-4 тижні) з визначеним обсягом роботи</span></div>
+    <div class="glossary-item"><span class="glossary-term">Product Backlog</span><span class="glossary-def">Впорядкований список всіх User Stories та задач продукту</span></div>
+    <div class="glossary-item"><span class="glossary-term">Product Owner</span><span class="glossary-def">Голос бізнесу в команді, відповідає за пріоритизацію backlog</span></div>
+    <div class="glossary-item"><span class="glossary-term">WIP Limit</span><span class="glossary-def">Work In Progress Limit — обмеження кількості задач в одночасній роботі (Kanban)</span></div>
+    <div class="glossary-item"><span class="glossary-term">Velocity</span><span class="glossary-def">Кількість story points виконаних командою за спринт</span></div>
+    <div class="glossary-item"><span class="glossary-term">DoR / DoD</span><span class="glossary-def">Definition of Ready / Done — критерії готовності задачі до старту і до завершення</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="ba-01.html">← BA-01</a><a href="ba-03.html" class="next">BA-03: Вимоги →</a></div></div>
+<footer class="footer"><p>BA & SA Mastery · BA-02 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
+</body></html>

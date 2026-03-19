@@ -1,0 +1,143 @@
+<!DOCTYPE html><html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DB-03 · SQL — запити та агрегації — BA & SA Mastery</title><link rel="stylesheet" href="../styles.css"></head><body>
+<nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">DB-03</span></nav>
+<div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
+  <div class="hero-badge fade-up">💾 Модуль DB-03</div>
+  <h1 class="fade-up d1">SQL — запити та агрегації:<br><span class="grad">SELECT, JOIN, GROUP BY та підзапити</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">SQL — мова аналітика. Вміння писати запити дозволяє тобі самостійно перевіряти дані, будувати звіти і знаходити аномалії без розробника.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">🔑 Основні SQL операції</div>
+  <div class="two-col">
+    <div>
+      <h4 style="color:var(--a1);margin-bottom:.8rem;">SELECT з фільтрацією:</h4>
+      <div class="code-block"><span class="cm">-- Знайти активних BA у системі</span>
+<span class="kw">SELECT</span> id, name, email, role
+<span class="kw">FROM</span> users
+<span class="kw">WHERE</span> role = <span class="str">'BA'</span>
+  <span class="kw">AND</span> active = <span class="kw">true</span>
+  <span class="kw">AND</span> created_at > <span class="str">'2024-01-01'</span>
+<span class="kw">ORDER BY</span> name <span class="kw">ASC</span>
+<span class="kw">LIMIT</span> 50;</div>
+    </div>
+    <div>
+      <h4 style="color:var(--a3);margin-bottom:.8rem;">Агрегації:</h4>
+      <div class="code-block"><span class="cm">-- Статистика замовлень по статусах</span>
+<span class="kw">SELECT</span>
+  status,
+  <span class="fn">COUNT</span>(*) <span class="kw">AS</span> total,
+  <span class="fn">SUM</span>(amount) <span class="kw">AS</span> revenue,
+  <span class="fn">AVG</span>(amount) <span class="kw">AS</span> avg_order
+<span class="kw">FROM</span> orders
+<span class="kw">GROUP BY</span> status
+<span class="kw">HAVING</span> <span class="fn">COUNT</span>(*) > 10
+<span class="kw">ORDER BY</span> revenue <span class="kw">DESC</span>;</div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🔗 JOIN — з'єднання таблиць</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Тип JOIN</th><th>Що повертає</th><th>Коли використовувати</th><th>BA приклад</th></tr></thead>
+    <tbody>
+      <tr><td><strong>INNER JOIN</strong></td><td>Тільки записи з відповідністю в обох</td><td>Основний join — є відповідність</td><td>Замовлення з іменами клієнтів</td></tr>
+      <tr><td><strong>LEFT JOIN</strong></td><td>Всі з лівої + відповідні з правої</td><td>Знайти хто НЕ має запису в правій</td><td>Клієнти без замовлень</td></tr>
+      <tr><td><strong>RIGHT JOIN</strong></td><td>Всі з правої + відповідні з лівої</td><td>Рідко — краще перевернути LEFT</td><td>Всі продукти включно без продажів</td></tr>
+      <tr><td><strong>FULL OUTER</strong></td><td>Всі записи з обох таблиць</td><td>Виявити всі невідповідності</td><td>Аудит даних між двома БД</td></tr>
+    </tbody>
+  </table></div>
+  <div class="two-col" style="margin-top:1.5rem;">
+    <div>
+      <h4 style="color:var(--a1);margin-bottom:.8rem;">INNER JOIN приклад:</h4>
+      <div class="code-block"><span class="cm">-- Замовлення з клієнтами та товарами</span>
+<span class="kw">SELECT</span>
+  c.name <span class="kw">AS</span> customer,
+  o.OrderDate,
+  p.ProductName,
+  od.Quantity,
+  od.Price
+<span class="kw">FROM</span> Orders o
+<span class="kw">JOIN</span> Customers c <span class="kw">ON</span> o.CustomerID = c.CustomerID
+<span class="kw">JOIN</span> OrderDetails od <span class="kw">ON</span> o.OrderID = od.OrderID
+<span class="kw">JOIN</span> Products p <span class="kw">ON</span> od.ProductID = p.ProductID
+<span class="kw">ORDER BY</span> o.OrderDate;</div>
+    </div>
+    <div>
+      <h4 style="color:var(--a3);margin-bottom:.8rem;">LEFT JOIN — клієнти без замовлень:</h4>
+      <div class="code-block"><span class="cm">-- Хто жодного разу не замовляв?</span>
+<span class="kw">SELECT</span>
+  c.CustomerID,
+  c.Name,
+  c.Email
+<span class="kw">FROM</span> Customers c
+<span class="kw">LEFT JOIN</span> Orders o
+  <span class="kw">ON</span> c.CustomerID = o.CustomerID
+<span class="kw">WHERE</span> o.OrderID <span class="kw">IS NULL</span>;
+
+<span class="cm">-- Якщо o.OrderID IS NULL значить</span>
+<span class="cm">-- для цього клієнта немає замовлень</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🧩 Підзапити та практичні приклади</div>
+  <div class="two-col">
+    <div>
+      <h4 style="color:var(--a5);margin-bottom:.8rem;">Subquery — підзапит:</h4>
+      <div class="code-block"><span class="cm">-- Клієнти що витратили більше середнього</span>
+<span class="kw">SELECT</span> c.Name,
+  <span class="fn">SUM</span>(o.TotalAmount) <span class="kw">AS</span> total
+<span class="kw">FROM</span> Customers c
+<span class="kw">JOIN</span> Orders o <span class="kw">ON</span> c.CustomerID = o.CustomerID
+<span class="kw">GROUP BY</span> c.Name
+<span class="kw">HAVING</span> <span class="fn">SUM</span>(o.TotalAmount) > (
+  <span class="kw">SELECT</span> <span class="fn">AVG</span>(TotalAmount)
+  <span class="kw">FROM</span> Orders
+)
+<span class="kw">ORDER BY</span> total <span class="kw">DESC</span>;</div>
+    </div>
+    <div>
+      <h4 style="color:var(--a4);margin-bottom:.8rem;">Топ-3 клієнти:</h4>
+      <div class="code-block"><span class="cm">-- Топ-3 клієнти за сумою замовлень</span>
+<span class="kw">SELECT</span>
+  c.Name,
+  <span class="fn">COUNT</span>(o.OrderID) <span class="kw">AS</span> orders_count,
+  <span class="fn">SUM</span>(o.TotalAmount) <span class="kw">AS</span> total_spent
+<span class="kw">FROM</span> Customers c
+<span class="kw">JOIN</span> Orders o <span class="kw">ON</span> c.CustomerID = o.CustomerID
+<span class="kw">GROUP BY</span> c.Name
+<span class="kw">ORDER BY</span> total_spent <span class="kw">DESC</span>
+<span class="kw">LIMIT</span> 3;</div>
+    </div>
+  </div>
+  <div class="highlight gold" style="margin-top:1rem;"><strong>🎯 BA і SQL:</strong> Вимога "звіт: всі замовлення з іменами клієнтів за цей місяць" = JOIN + WHERE по даті. Знаючи SQL ти пишеш точніші вимоги до звітів і можеш самостійно перевіряти дані без розробника.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">📊 Практичні завдання</div>
+  <div class="card"><ul class="checklist">
+    <li>Напиши SELECT що повертає всіх клієнтів з містом Kyiv відсортованих за ім'ям</li>
+    <li>Знайди топ-5 продуктів за загальною кількістю продажів</li>
+    <li>Порахуй середню суму замовлення по кожному клієнту (GROUP BY + AVG)</li>
+    <li>Знайди клієнтів що зробили більше 2 замовлень за місяць (HAVING)</li>
+    <li>Виведи продукти без жодного замовлення (LEFT JOIN + IS NULL)</li>
+  </ul></div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">SELECT</span><span class="glossary-def">Оператор вибірки даних з таблиці</span></div>
+    <div class="glossary-item"><span class="glossary-term">JOIN</span><span class="glossary-def">Операція з'єднання рядків з двох або більше таблиць за умовою</span></div>
+    <div class="glossary-item"><span class="glossary-term">GROUP BY</span><span class="glossary-def">Групування результатів за значенням стовпця для агрегації</span></div>
+    <div class="glossary-item"><span class="glossary-term">HAVING</span><span class="glossary-def">Фільтрація після GROUP BY — на відміну від WHERE, яка фільтрує до групування</span></div>
+    <div class="glossary-item"><span class="glossary-term">Subquery</span><span class="glossary-def">Вкладений SELECT всередині іншого запиту</span></div>
+    <div class="glossary-item"><span class="glossary-term">NULL</span><span class="glossary-def">Відсутнє значення — перевіряється через IS NULL а не = NULL</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="db-02.html">← DB-02</a><a href="db-04.html" class="next">DB-04: Advanced SQL →</a></div></div>
+<footer class="footer"><p>BA & SA Mastery · DB-03 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
+</body></html>

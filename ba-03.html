@@ -1,0 +1,106 @@
+<!DOCTYPE html><html lang="uk"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>BA-03 · Вимоги та User Stories — BA & SA Mastery</title><link rel="stylesheet" href="../styles.css"></head><body>
+<nav class="nav"><a href="../index.html" class="nav-back">← Головна</a><a href="../index.html" class="nav-logo">⚡ BA & SA Mastery</a><span class="nav-title">BA-03</span></nav>
+<div style="position:relative;z-index:1;padding:3.5rem 2rem 2rem;max-width:900px;margin:0 auto;">
+  <div class="hero-badge fade-up">📝 Модуль BA-03</div>
+  <h1 class="fade-up d1">Вимоги та User Stories:<br><span class="grad">Декомпозиція, пріоритизація та архітектура вимог</span></h1>
+  <p class="fade-up d2" style="color:var(--text2);margin-top:1rem;font-size:1.05rem;max-width:620px;">Вимоги — головний продукт BA. Розуміння різних типів вимог і методів їх збору є ключовою компетенцією.</p>
+</div>
+
+<div class="section">
+  <div class="section-title">📝 Типи вимог</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Тип</th><th>Що описує</th><th>Приклад</th><th>Хто використовує</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Business Requirements</strong></td><td>Чому ініційована зміна, стратегічні цілі</td><td>"Збільшити конверсію реєстрацій на 20%"</td><td>Топ-менеджмент, PO</td></tr>
+      <tr><td><strong>Stakeholder Requirements</strong></td><td>Які результати потрібні конкретним групам</td><td>"Менеджер бачить свої замовлення"</td><td>BA, PO</td></tr>
+      <tr><td><strong>Solution Requirements</strong></td><td>Що система повинна робити (функціональні)</td><td>"Система надсилає email при реєстрації"</td><td>Dev, QA</td></tr>
+      <tr><td><strong>Non-Functional Requirements</strong></td><td>Як добре система виконує функції</td><td>"Відповідь API ≤ 200ms при 1000 RPS"</td><td>Dev, Architect</td></tr>
+      <tr><td><strong>Transition Requirements</strong></td><td>Тимчасові вимоги для переходу</td><td>"Міграція даних зі старої системи"</td><td>BA, DBA, Dev</td></tr>
+    </tbody>
+  </table></div>
+</div>
+
+<div class="section">
+  <div class="section-title">🎯 User Story — формат та якість</div>
+  <div class="highlight" style="margin-bottom:1.5rem;"><strong>Формат:</strong> As a [роль], I want [дія], so that [цінність / мета]</div>
+  <div class="two-col">
+    <div class="card" style="border-color:rgba(0,255,136,0.3);">
+      <span class="tag tag-green" style="margin-bottom:.8rem;display:inline-block;">✅ Добра User Story</span>
+      <p style="font-style:italic;color:var(--text2);margin-bottom:.8rem;">"As a registered user, I want to reset my password via email, so that I can regain access if I forget it."</p>
+      <ul class="checklist" style="font-size:.82rem;"><li>Чітка роль (registered user)</li><li>Конкретна дія (reset via email)</li><li>Зрозуміла цінність (regain access)</li></ul>
+    </div>
+    <div class="card" style="border-color:rgba(255,107,53,0.3);">
+      <span class="tag tag-orange" style="margin-bottom:.8rem;display:inline-block;">❌ Погана User Story</span>
+      <p style="font-style:italic;color:var(--text2);margin-bottom:.8rem;">"As a user, I want the system to work better."</p>
+      <ul class="checklist" style="font-size:.82rem;"><li style="color:var(--a4);">Роль розмита — просто "user"</li><li style="color:var(--a4);">Дія незрозуміла — "work better"?</li><li style="color:var(--a4);">Цінність відсутня</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">✅ INVEST — перевірка якості User Story</div>
+  <div class="card-grid">
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a1);">I</span><h3>Independent</h3><p>Незалежна від інших stories. Можна розробляти у будь-якому порядку.</p></div>
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a2);">N</span><h3>Negotiable</h3><p>Деталі обговорюються — не жорсткий контракт а відправна точка.</p></div>
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a3);">V</span><h3>Valuable</h3><p>Несе реальну цінність для користувача або бізнесу.</p></div>
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a5);">E</span><h3>Estimable</h3><p>Команда може оцінити складність. Якщо ні — потрібно деталізувати.</p></div>
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a4);">S</span><h3>Small</h3><p>Завершується за один спринт. Великі stories потрібно ділити.</p></div>
+    <div class="card"><span style="font-size:1.8rem;font-family:'Syne',sans-serif;color:var(--a3);">T</span><h3>Testable</h3><p>Можна написати тест. Якщо ні — вимоги недостатньо специфічні.</p></div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">🎯 Acceptance Criteria — Given / When / Then</div>
+  <div class="card" style="border-color:rgba(0,212,255,0.3);">
+    <h3 style="color:var(--a1);margin-bottom:1rem;">📋 Приклад: Password Reset</h3>
+    <div class="code-block"><span class="cm">## Acceptance Criteria</span>
+
+<span class="fn">Scenario 1:</span> Успішне скидання пароля
+<span class="kw">Given</span> користувач на сторінці Login
+<span class="kw">When</span> він клікає "Forgot Password" і вводить валідний email
+<span class="kw">Then</span> система надсилає лист протягом 2 хвилин
+  <span class="kw">And</span> посилання активне 1 годину
+  <span class="kw">And</span> показує: <span class="str">"Check your email"</span>
+
+<span class="fn">Scenario 2:</span> Email не зареєстрований
+<span class="kw">Given</span> користувач вводить незареєстрований email
+<span class="kw">When</span> натискає Submit
+<span class="kw">Then</span> система показує: <span class="str">"Check your email"</span>
+  <span class="cm">-- ВАЖЛИВО: не розкриваємо існування акаунту!</span>
+
+<span class="fn">Scenario 3:</span> Прострочене посилання
+<span class="kw">Given</span> посилання старше 1 год
+<span class="kw">Then</span> показує помилку <span class="str">"Link expired"</span> з кнопкою "Try again"</div>
+  </div>
+</div>
+
+<div class="section">
+  <div class="section-title">⚖️ GWT vs Rule-based формат</div>
+  <div class="table-wrap"><table>
+    <thead><tr><th>Критерій</th><th>Given-When-Then</th><th>Rule-based</th></tr></thead>
+    <tbody>
+      <tr><td>Зрозумілість бізнесу</td><td>✅ Висока</td><td>🟡 Середня</td></tr>
+      <tr><td>Автоматизація тестів</td><td>✅ Так (BDD/Gherkin)</td><td>🟡 Частково</td></tr>
+      <tr><td>Складна бізнес-логіка</td><td>❌ Громіздко</td><td>✅ Ідеально</td></tr>
+      <tr><td>Опис взаємодії юзера</td><td>✅ Відмінно</td><td>❌ Погано</td></tr>
+      <tr><td>Коли обирати</td><td>UI/UX flows, поведінка</td><td>Валідації, ролі, правила</td></tr>
+    </tbody>
+  </table></div>
+  <div class="highlight" style="margin-top:1rem;"><strong>💡 Найкращий підхід:</strong> Комбінуй обидва! Описуй сценарій у GWT, а окремі бізнес-правила — списком правил поряд з user story.</div>
+</div>
+
+<div class="section">
+  <div class="section-title">Глосарій</div>
+  <div class="glossary">
+    <div class="glossary-item"><span class="glossary-term">User Story</span><span class="glossary-def">Короткий опис функціональності з точки зору кінцевого користувача</span></div>
+    <div class="glossary-item"><span class="glossary-term">Acceptance Criteria</span><span class="glossary-def">Перелік умов при виконанні яких User Story вважається завершеною</span></div>
+    <div class="glossary-item"><span class="glossary-term">Transition Requirements</span><span class="glossary-def">Тимчасові вимоги лише для переходу від поточного до нового стану системи</span></div>
+    <div class="glossary-item"><span class="glossary-term">BDD</span><span class="glossary-def">Behavior-Driven Development — розробка через поведінкові сценарії Given/When/Then</span></div>
+    <div class="glossary-item"><span class="glossary-term">INVEST</span><span class="glossary-def">Критерії якості User Story: Independent, Negotiable, Valuable, Estimable, Small, Testable</span></div>
+    <div class="glossary-item"><span class="glossary-term">Epic</span><span class="glossary-def">Велика User Story яку потрібно розбити на кілька менших stories</span></div>
+  </div>
+</div>
+
+<div class="section"><div class="page-nav"><a href="ba-02.html">← BA-02</a><a href="ba-04.html" class="next">BA-04: Ризики та метрики →</a></div></div>
+<footer class="footer"><p>BA & SA Mastery · BA-03 · <a href="../index.html">До всіх модулів</a> · <a href="links.html">Посилання</a></p></footer>
+</body></html>
